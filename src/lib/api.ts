@@ -1,41 +1,30 @@
 /**
- * Central API client for our Django backend.
+ * =========================================================
+ * Generic API client
+ * =========================================================
  *
- * IMPORTANT:
+ * This is the single low-level HTTP layer used by our shop.
  *
- * React components should NOT repeatedly contain code such as:
+ * The important rule is:
  *
- *     fetch("/api/products/")
+ * React components
+ *       ↓
+ * store-api.ts
+ *       ↓
+ * api.ts
+ *       ↓
+ * Django
  *
- * with authentication/CSRF logic duplicated everywhere.
- *
- * Instead, everything should eventually go through this file.
+ * Components should not contain their own Django URLs,
+ * CSRF logic, error parsing, etc.
  */
-
-
-// ---------------------------------------------------------
-// Types
-// ---------------------------------------------------------
-
-export interface ApiError {
-  detail?: string;
-  [key: string]: unknown;
-}
-
-
-// ---------------------------------------------------------
-// Read a browser cookie
-// ---------------------------------------------------------
 
 function getCookie(name: string): string | null {
   /**
-   * document.cookie contains values such as:
+   * document does not exist during server rendering.
    *
-   *     csrftoken=abc123; other=value
-   *
-   * Django's CSRF middleware uses the csrftoken cookie.
+   * Therefore this function only reads cookies in the browser.
    */
-
   if (typeof document === "undefined") {
     return null;
   }
@@ -54,30 +43,77 @@ function getCookie(name: string): string | null {
 }
 
 
-// ---------------------------------------------------------
-// Ensure CSRF exists
-// ---------------------------------------------------------
+/**
+ * Return Django's CSRF token.
+ *
+ * We only need this for requests that modify data:
+ *
+ * POST
+ * PUT
+ * PATCH
+ * DELETE
+ */
+async function ensureCsrfToken(): Promise<string | null> {
+  const response = await fetch(
+    "/api/auth/csrf/",
+    {
+      method: "GET",
+      credentials: "include",
+    },
+  );
 
-export async function ensureCsrfToken(): Promise<void> {
-  /**
-   * Before submitting a POST/PUT/PATCH/DELETE request,
-   * Django expects a CSRF token.
-   *
-   * We ask Django for it once.
-   */
+  if (!response.ok) {
+    throw new Error(
+      "Unable to initialize CSRF protection.",
+    );
+  }
 
-  await fetch("/api/auth/csrf/", {
-    method: "GET",
-
-    credentials: "include",
-  });
+  return getCookie("csrftoken");
 }
 
 
-// ---------------------------------------------------------
-// Generic API request
-// ---------------------------------------------------------
+/**
+ * Build the actual URL.
+ *
+ * Browser:
+ *
+ *     /api/products/
+ *
+ * is enough because Next.js rewrites it to Django.
+ *
+ * Server:
+ *
+ *     fetch("/api/products/")
+ *
+ * is not always valid because server-side fetch needs an
+ * absolute URL.
+ *
+ * So server-side rendering uses DJANGO_INTERNAL_URL.
+ */
+function buildApiUrl(path: string): string {
+  const djangoInternalUrl =
+    process.env.DJANGO_INTERNAL_URL;
 
+  /**
+   * We are running in Node/Next.js server code.
+   */
+  if (
+    typeof window === "undefined" &&
+    djangoInternalUrl
+  ) {
+    return `${djangoInternalUrl}${path}`;
+  }
+
+  /**
+   * Browser requests stay same-origin.
+   */
+  return path;
+}
+
+
+/**
+ * Main API function.
+ */
 export async function apiFetch<T>(
   path: string,
   options: RequestInit = {},
@@ -92,9 +128,13 @@ export async function apiFetch<T>(
   );
 
 
-  // JSON requests should tell Django what we are sending.
-  if (options.body && !headers.has("Content-Type")) {
-
+  /**
+   * JSON requests.
+   */
+  if (
+    options.body &&
+    !headers.has("Content-Type")
+  ) {
     headers.set(
       "Content-Type",
       "application/json",
@@ -102,7 +142,9 @@ export async function apiFetch<T>(
   }
 
 
-  // Unsafe HTTP methods require CSRF.
+  /**
+   * Unsafe methods require CSRF protection.
+   */
   if (
     method === "POST" ||
     method === "PUT" ||
@@ -110,12 +152,19 @@ export async function apiFetch<T>(
     method === "DELETE"
   ) {
 
-    const csrfToken = getCookie(
+    let csrfToken = getCookie(
       "csrftoken",
     );
 
-    if (csrfToken) {
+    /**
+     * If we don't already have a token, ask Django
+     * to create one.
+     */
+    if (!csrfToken) {
+      csrfToken = await ensureCsrfToken();
+    }
 
+    if (csrfToken) {
       headers.set(
         "X-CSRFToken",
         csrfToken,
@@ -125,40 +174,42 @@ export async function apiFetch<T>(
 
 
   const response = await fetch(
-    path,
+    buildApiUrl(path),
     {
       ...options,
 
       headers,
 
-      // Send Django's session cookie.
+      /**
+       * Send Django's session cookie.
+       */
       credentials: "include",
-
-      cache: "no-store",
     },
   );
 
 
-  // Attempt to parse JSON.
-  const data = await response.json().catch(
-    () => null,
-  );
+  /**
+   * Try to parse JSON.
+   */
+  const data = await response
+    .json()
+    .catch(() => null);
 
 
+  /**
+   * Convert HTTP errors into JavaScript errors.
+   */
   if (!response.ok) {
 
-    const error: ApiError = (
-      data ?? {
-        detail: "Something went wrong.",
-      }
-    );
+    const message =
+      data &&
+      typeof data.detail === "string"
+        ? data.detail
+        : `API request failed: ${response.status}`;
 
-    throw new Error(
-      typeof error.detail === "string"
-        ? error.detail
-        : "API request failed.",
-    );
+    throw new Error(message);
   }
+
 
   return data as T;
 }
