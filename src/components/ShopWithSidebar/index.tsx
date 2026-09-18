@@ -7,14 +7,21 @@ import GenderDropdown from "./GenderDropdown";
 import SizeDropdown from "./SizeDropdown";
 import ColorsDropdwon from "./ColorsDropdwon";
 import PriceDropdown from "./PriceDropdown";
-import shopData from "../Shop/shopData";
 import SingleGridItem from "../Shop/SingleGridItem";
 import SingleListItem from "../Shop/SingleListItem";
+
+import { getProducts, adaptOscarProduct } from "@/lib/store-api";
+
+import type { Product } from "@/types/product";
 
 const ShopWithSidebar = () => {
   const [productStyle, setProductStyle] = useState("grid");
   const [productSidebar, setProductSidebar] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
+
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [productsError, setProductsError] = useState<string | null>(null);
 
   const handleStickyMenu = () => {
     if (window.scrollY >= 80) {
@@ -97,12 +104,40 @@ const ShopWithSidebar = () => {
     };
   });
 
+  useEffect(() => {
+    /**
+     * Load products from Django when the Shop page opens.
+     */
+    async function loadProducts() {
+      try {
+        setLoadingProducts(true);
+        setProductsError(null);
+
+        /**
+         * Ask Django for the current catalogue.
+         */
+        const response = await getProducts();
+
+        /**
+         * Convert Oscar products into the format expected
+         * by the existing NextMerce components.
+         */
+        const nextMerceProducts = response.results.map(adaptOscarProduct);
+
+        setProducts(nextMerceProducts);
+      } catch (error) {
+        setProductsError(error instanceof Error ? error.message : "Unable to load products.");
+      } finally {
+        setLoadingProducts(false);
+      }
+    }
+
+    loadProducts();
+  }, []);
+
   return (
     <>
-      <Breadcrumb
-        title={"Explore All Products"}
-        pages={["shop", "/", "shop with sidebar"]}
-      />
+      <Breadcrumb title={"Explore All Products"} pages={["shop", "/", "shop with sidebar"]} />
       <section className="overflow-hidden relative pb-20 pt-5 lg:pt-20 xl:pt-28 bg-[#f3f4f6]">
         <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
           <div className="flex gap-7.5">
@@ -118,9 +153,7 @@ const ShopWithSidebar = () => {
                 onClick={() => setProductSidebar(!productSidebar)}
                 aria-label="button for product sidebar toggle"
                 className={`xl:hidden absolute -right-12.5 sm:-right-8 flex items-center justify-center w-8 h-8 rounded-md bg-white shadow-1 ${
-                  stickyMenu
-                    ? "lg:top-20 sm:top-34.5 top-35"
-                    : "lg:top-24 sm:top-39 top-37"
+                  stickyMenu ? "lg:top-20 sm:top-34.5 top-35" : "lg:top-24 sm:top-39 top-37"
                 }`}
               >
                 <svg
@@ -184,8 +217,7 @@ const ShopWithSidebar = () => {
                     <CustomSelect options={options} />
 
                     <p>
-                      Showing <span className="text-dark">9 of 50</span>{" "}
-                      Products
+                      Showing <span className="text-dark">{products.length}</span> Products
                     </p>
                   </div>
 
@@ -278,13 +310,33 @@ const ShopWithSidebar = () => {
                     : "flex flex-col gap-7.5"
                 }`}
               >
-                {shopData.map((item, key) =>
-                  productStyle === "grid" ? (
-                    <SingleGridItem item={item} key={key} />
-                  ) : (
-                    <SingleListItem item={item} key={key} />
-                  )
+                {loadingProducts && (
+                  <div className="col-span-full py-12 text-center">
+                    <p className="text-gray-500">Loading products...</p>
+                  </div>
                 )}
+
+                {!loadingProducts && productsError && (
+                  <div className="col-span-full py-12 text-center">
+                    <p className="text-red-500">{productsError}</p>
+                  </div>
+                )}
+
+                {!loadingProducts && !productsError && products.length === 0 && (
+                  <div className="col-span-full py-12 text-center">
+                    <p className="text-gray-500">No products found.</p>
+                  </div>
+                )}
+
+                {!loadingProducts &&
+                  !productsError &&
+                  products.map((item) =>
+                    productStyle === "grid" ? (
+                      <SingleGridItem item={item} key={item.id} />
+                    ) : (
+                      <SingleListItem item={item} key={item.id} />
+                    ),
+                  )}
               </div>
               {/* <!-- Products Grid Tab Content End --> */}
 

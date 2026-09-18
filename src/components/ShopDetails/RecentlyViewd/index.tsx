@@ -31,12 +31,7 @@ const RecentlyViewdItems = () => {
           <div className="mb-10 flex items-center justify-between">
             <div>
               <span className="flex items-center gap-2.5 font-medium text-dark mb-1.5">
-                <Image
-                  src="/images/icons/icon-05.svg"
-                  width={17}
-                  height={17}
-                  alt="icon"
-                />
+                <Image src="/images/icons/icon-05.svg" width={17} height={17} alt="icon" />
                 Categories
               </span>
               <h2 className="font-semibold text-xl xl:text-heading-5 text-dark">
@@ -83,12 +78,7 @@ const RecentlyViewdItems = () => {
             </div>
           </div>
 
-          <Swiper
-            ref={sliderRef}
-            slidesPerView={4}
-            spaceBetween={20}
-            className="justify-between"
-          >
+          <Swiper ref={sliderRef} slidesPerView={4} spaceBetween={20} className="justify-between">
             {shopData.map((item, key) => (
               <SwiperSlide key={key}>
                 <ProductItem item={item} />

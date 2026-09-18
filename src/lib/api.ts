@@ -42,7 +42,6 @@ function getCookie(name: string): string | null {
   return null;
 }
 
-
 /**
  * Return Django's CSRF token.
  *
@@ -54,23 +53,17 @@ function getCookie(name: string): string | null {
  * DELETE
  */
 async function ensureCsrfToken(): Promise<string | null> {
-  const response = await fetch(
-    "/api/auth/csrf/",
-    {
-      method: "GET",
-      credentials: "include",
-    },
-  );
+  const response = await fetch("/api/auth/csrf/", {
+    method: "GET",
+    credentials: "include",
+  });
 
   if (!response.ok) {
-    throw new Error(
-      "Unable to initialize CSRF protection.",
-    );
+    throw new Error("Unable to initialize CSRF protection.");
   }
 
   return getCookie("csrftoken");
 }
-
 
 /**
  * Build the actual URL.
@@ -91,16 +84,12 @@ async function ensureCsrfToken(): Promise<string | null> {
  * So server-side rendering uses DJANGO_INTERNAL_URL.
  */
 function buildApiUrl(path: string): string {
-  const djangoInternalUrl =
-    process.env.DJANGO_INTERNAL_URL;
+  const djangoInternalUrl = process.env.DJANGO_INTERNAL_URL;
 
   /**
    * We are running in Node/Next.js server code.
    */
-  if (
-    typeof window === "undefined" &&
-    djangoInternalUrl
-  ) {
+  if (typeof window === "undefined" && djangoInternalUrl) {
     return `${djangoInternalUrl}${path}`;
   }
 
@@ -110,51 +99,26 @@ function buildApiUrl(path: string): string {
   return path;
 }
 
-
 /**
  * Main API function.
  */
-export async function apiFetch<T>(
-  path: string,
-  options: RequestInit = {},
-): Promise<T> {
+export async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
+  const method = (options.method ?? "GET").toUpperCase();
 
-  const method = (
-    options.method ?? "GET"
-  ).toUpperCase();
-
-  const headers = new Headers(
-    options.headers,
-  );
-
+  const headers = new Headers(options.headers);
 
   /**
    * JSON requests.
    */
-  if (
-    options.body &&
-    !headers.has("Content-Type")
-  ) {
-    headers.set(
-      "Content-Type",
-      "application/json",
-    );
+  if (options.body && !headers.has("Content-Type")) {
+    headers.set("Content-Type", "application/json");
   }
-
 
   /**
    * Unsafe methods require CSRF protection.
    */
-  if (
-    method === "POST" ||
-    method === "PUT" ||
-    method === "PATCH" ||
-    method === "DELETE"
-  ) {
-
-    let csrfToken = getCookie(
-      "csrftoken",
-    );
+  if (method === "POST" || method === "PUT" || method === "PATCH" || method === "DELETE") {
+    let csrfToken = getCookie("csrftoken");
 
     /**
      * If we don't already have a token, ask Django
@@ -165,51 +129,37 @@ export async function apiFetch<T>(
     }
 
     if (csrfToken) {
-      headers.set(
-        "X-CSRFToken",
-        csrfToken,
-      );
+      headers.set("X-CSRFToken", csrfToken);
     }
   }
 
+  const response = await fetch(buildApiUrl(path), {
+    ...options,
 
-  const response = await fetch(
-    buildApiUrl(path),
-    {
-      ...options,
+    headers,
 
-      headers,
-
-      /**
-       * Send Django's session cookie.
-       */
-      credentials: "include",
-    },
-  );
-
+    /**
+     * Send Django's session cookie.
+     */
+    credentials: "include",
+  });
 
   /**
    * Try to parse JSON.
    */
-  const data = await response
-    .json()
-    .catch(() => null);
-
+  const data = await response.json().catch(() => null);
 
   /**
    * Convert HTTP errors into JavaScript errors.
    */
   if (!response.ok) {
-
     const message =
-      data &&
-      typeof data.detail === "string"
+      data && typeof data.detail === "string"
         ? data.detail
         : `API request failed: ${response.status}`;
 
     throw new Error(message);
   }
-
 
   return data as T;
 }

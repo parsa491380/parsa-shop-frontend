@@ -7,9 +7,7 @@ interface CartModalContextType {
   closeCartModal: () => void;
 }
 
-const CartModalContext = createContext<CartModalContextType | undefined>(
-  undefined
-);
+const CartModalContext = createContext<CartModalContextType | undefined>(undefined);
 
 export const useCartModalContext = () => {
   const context = useContext(CartModalContext);
@@ -31,9 +29,7 @@ export const CartModalProvider = ({ children }) => {
   };
 
   return (
-    <CartModalContext.Provider
-      value={{ isCartModalOpen, openCartModal, closeCartModal }}
-    >
+    <CartModalContext.Provider value={{ isCartModalOpen, openCartModal, closeCartModal }}>
       {children}
     </CartModalContext.Provider>
   );

@@ -5,15 +5,12 @@ import LatestPosts from "../Blog/LatestPosts";
 import LatestProducts from "../Blog/LatestProducts";
 import blogData from "../BlogGrid/blogData";
 import Image from "next/image";
-import shopData from "../Shop/shopData"; 
+import shopData from "../Shop/shopData";
 
 const BlogDetailsWithSidebar = () => {
   return (
     <>
-      <Breadcrumb
-        title={"Blog Details With Sidebar"}
-        pages={["blog details sidebar"]}
-      />
+      <Breadcrumb title={"Blog Details With Sidebar"} pages={["blog details sidebar"]} />
       <section className="overflow-hidden py-20 bg-gray-2">
         <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
           <div className="flex flex-col lg:flex-row gap-7.5 xl:gap-12.5">
@@ -48,27 +45,24 @@ const BlogDetailsWithSidebar = () => {
                 </h2>
 
                 <p className="mb-6">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer sit amet eros ac ipsum egestas dapibus. Vivamus
-                  gravida, ex non placerat tincidunt, lorem felis facilisis
-                  tellus, vitae bibendum purus felis eget tellus. In non rutrum
-                  ipsum. Morbi ut dui ante.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet eros ac
+                  ipsum egestas dapibus. Vivamus gravida, ex non placerat tincidunt, lorem felis
+                  facilisis tellus, vitae bibendum purus felis eget tellus. In non rutrum ipsum.
+                  Morbi ut dui ante.
                 </p>
 
                 <p className="mb-6">
-                  Nunc faucibus libero sem, quis placerat nisl pellentesque
-                  eget. Morbi porta velit ut leo sollicitudin, a faucibus purus
-                  faucibus. Maecenas mollis dui nec metus euismod, sed aliquam
-                  risus luctus.
+                  Nunc faucibus libero sem, quis placerat nisl pellentesque eget. Morbi porta velit
+                  ut leo sollicitudin, a faucibus purus faucibus. Maecenas mollis dui nec metus
+                  euismod, sed aliquam risus luctus.
                 </p>
 
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Quis enim lobortis scelerisque fermentum. Neque sodales ut
-                  etiam sit amet. Ligula ullamcorper malesuada proin libero nunc
-                  consequat interdum varius. Quam pellentesque nec nam aliquam
-                  sem et tortor consequat.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque
+                  fermentum. Neque sodales ut etiam sit amet. Ligula ullamcorper malesuada proin
+                  libero nunc consequat interdum varius. Quam pellentesque nec nam aliquam sem et
+                  tortor consequat.
                 </p>
 
                 <div className="mt-7.5">
@@ -79,31 +73,20 @@ const BlogDetailsWithSidebar = () => {
                   <ul className="list-disc pl-6">
                     <li>Consectetur adipiscing elit in voluptate velit.</li>
                     <li>Mattis vulputate cupidatat.</li>
-                    <li>
-                      Vulputate enim nulla aliquet porttitor odio pellentesque
-                    </li>
+                    <li>Vulputate enim nulla aliquet porttitor odio pellentesque</li>
                     <li>Ligula ullamcorper malesuada proin</li>
                   </ul>
                 </div>
 
                 <div className="rounded-xl bg-white pt-7.5 pb-6 px-4 sm:px-7.5 my-7.5">
                   <p className="italic text-dark text-center">
-                    ‘‘Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod incididunt utionals labore et dolore magna
-                    aliqua quis fermentum,,
+                    ‘‘Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    incididunt utionals labore et dolore magna aliqua quis fermentum,,
                   </p>
 
-                  <a
-                    href="#"
-                    className="flex items-center justify-center gap-3 mt-5.5"
-                  >
+                  <a href="#" className="flex items-center justify-center gap-3 mt-5.5">
                     <div className="flex w-12 h-12 rounded-full overflow-hidden">
-                      <Image
-                        src="/images/users/user-04.jpg"
-                        alt="user"
-                        width={48}
-                        height={48}
-                      />
+                      <Image src="/images/users/user-04.jpg" alt="user" width={48} height={48} />
                     </div>
 
                     <div>
@@ -114,33 +97,29 @@ const BlogDetailsWithSidebar = () => {
                 </div>
 
                 <p className="mb-6">
-                  consectetur adipiscing elit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  mattis vulputate cupidatat.
+                  consectetur adipiscing elit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat mattis vulputate cupidatat.
                 </p>
 
                 <p className="mb-6">
-                  Nunc faucibus libero sem, quis placerat nisl pellentesque
-                  eget. Morbi porta velit ut leo sollicitudin, a faucibus purus
-                  faucibus. Maecenas mollis dui nec metus euismod, sed aliquam
-                  risus luctus.
+                  Nunc faucibus libero sem, quis placerat nisl pellentesque eget. Morbi porta velit
+                  ut leo sollicitudin, a faucibus purus faucibus. Maecenas mollis dui nec metus
+                  euismod, sed aliquam risus luctus.
                 </p>
 
                 <p className="mb-6">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Quis enim lobortis scelerisque fermentum. Neque sodales ut
-                  etiam sit amet. Ligula ullamcorper malesuada proin libero nunc
-                  consequat interdum varius. Quam pellentesque nec nam aliquam
-                  sem et tortor consequat.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Quis enim lobortis scelerisque
+                  fermentum. Neque sodales ut etiam sit amet. Ligula ullamcorper malesuada proin
+                  libero nunc consequat interdum varius. Quam pellentesque nec nam aliquam sem et
+                  tortor consequat.
                 </p>
 
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer sit amet eros ac ipsum egestas dapibus. Vivamus
-                  gravida, ex non placerat tincidunt, lorem felis facilisis
-                  tellus, vitae bibendum purus felis eget tellus. In non rutrum
-                  ipsum. Morbi ut dui ante.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet eros ac
+                  ipsum egestas dapibus. Vivamus gravida, ex non placerat tincidunt, lorem felis
+                  facilisis tellus, vitae bibendum purus felis eget tellus. In non rutrum ipsum.
+                  Morbi ut dui ante.
                 </p>
 
                 <div className="flex flex-wrap items-center justify-between gap-10 mt-10">
@@ -277,9 +256,7 @@ const BlogDetailsWithSidebar = () => {
               {/* <!-- Popular Category box --> */}
               <div className="shadow-1 bg-white rounded-xl mt-7.5">
                 <div className="px-4 sm:px-6 py-4.5 border-b border-gray-3">
-                  <h2 className="font-medium text-lg text-dark">
-                    Popular Category
-                  </h2>
+                  <h2 className="font-medium text-lg text-dark">Popular Category</h2>
                 </div>
 
                 <div className="p-4 sm:p-6">

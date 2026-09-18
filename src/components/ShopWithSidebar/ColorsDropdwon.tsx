@@ -18,9 +18,7 @@ const ColorsDropdwon = () => {
         <p className="text-dark">Colors</p>
         <button
           aria-label="button for colors dropdown"
-          className={`text-dark ease-out duration-200 ${
-            toggleDropdown && "rotate-180"
-          }`}
+          className={`text-dark ease-out duration-200 ${toggleDropdown && "rotate-180"}`}
         >
           <svg
             className="fill-current"
@@ -41,17 +39,9 @@ const ColorsDropdwon = () => {
       </div>
 
       {/* <!-- dropdown menu --> */}
-      <div
-        className={`flex-wrap gap-2.5 p-6 ${
-          toggleDropdown ? "flex" : "hidden"
-        }`}
-      >
+      <div className={`flex-wrap gap-2.5 p-6 ${toggleDropdown ? "flex" : "hidden"}`}>
         {colors.map((color, key) => (
-          <label
-            key={key}
-            htmlFor={color}
-            className="cursor-pointer select-none flex items-center"
-          >
+          <label key={key} htmlFor={color} className="cursor-pointer select-none flex items-center">
             <div className="relative">
               <input
                 type="radio"

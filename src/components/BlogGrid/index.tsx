@@ -134,7 +134,7 @@ const BlogGrid = () => {
           </div>
           {/* <!-- Blog Pagination End --> */}
         </div>
-      </section> 
+      </section>
     </>
   );
 };

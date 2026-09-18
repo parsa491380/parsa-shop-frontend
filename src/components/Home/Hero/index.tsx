@@ -37,12 +37,8 @@ const Hero = () => {
                         limited time offer
                       </p>
                       <span className="flex items-center gap-3">
-                        <span className="font-medium text-heading-5 text-red">
-                          $699
-                        </span>
-                        <span className="font-medium text-2xl text-dark-4 line-through">
-                          $999
-                        </span>
+                        <span className="font-medium text-heading-5 text-red">$699</span>
+                        <span className="font-medium text-2xl text-dark-4 line-through">$999</span>
                       </span>
                     </div>
                   </div>
@@ -69,12 +65,8 @@ const Hero = () => {
                         limited time offer
                       </p>
                       <span className="flex items-center gap-3">
-                        <span className="font-medium text-heading-5 text-red">
-                          $699
-                        </span>
-                        <span className="font-medium text-2xl text-dark-4 line-through">
-                          $999
-                        </span>
+                        <span className="font-medium text-heading-5 text-red">$699</span>
+                        <span className="font-medium text-2xl text-dark-4 line-through">$999</span>
                       </span>
                     </div>
                   </div>
@@ -89,8 +81,6 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-
-              
             </div>
           </div>
         </div>

@@ -24,9 +24,7 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
       {!smallView && (
         <div className="items-center justify-between border-t border-gray-3 py-5 px-7.5 hidden md:flex">
           <div className="min-w-[111px]">
-            <p className="text-custom-sm text-red">
-              #{orderItem.orderId.slice(-8)}
-            </p>
+            <p className="text-custom-sm text-red">#{orderItem.orderId.slice(-8)}</p>
           </div>
           <div className="min-w-[175px]">
             <p className="text-custom-sm text-dark">{orderItem.createdAt}</p>
@@ -38,10 +36,10 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
                 orderItem.status === "delivered"
                   ? "text-green bg-green-light-6"
                   : orderItem.status === "on-hold"
-                  ? "text-red bg-red-light-6"
-                  : orderItem.status === "processing"
-                  ? "text-yellow bg-yellow-light-4"
-                  : "Unknown Status"
+                    ? "text-red bg-red-light-6"
+                    : orderItem.status === "processing"
+                      ? "text-yellow bg-yellow-light-4"
+                      : "Unknown Status"
               }`}
             >
               {orderItem.status}
@@ -57,10 +55,7 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
           </div>
 
           <div className="flex gap-5 items-center">
-            <OrderActions
-              toggleDetails={toggleDetails}
-              toggleEdit={toggleEdit}
-            />
+            <OrderActions toggleDetails={toggleDetails} toggleEdit={toggleEdit} />
           </div>
         </div>
       )}
@@ -70,14 +65,12 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
           <div className="py-4.5 px-7.5">
             <div className="">
               <p className="text-custom-sm text-dark">
-                <span className="font-bold pr-2"> Order:</span> #
-                {orderItem.orderId.slice(-8)}
+                <span className="font-bold pr-2"> Order:</span> #{orderItem.orderId.slice(-8)}
               </p>
             </div>
             <div className="">
               <p className="text-custom-sm text-dark">
-                <span className="font-bold pr-2">Date:</span>{" "}
-                {orderItem.createdAt}
+                <span className="font-bold pr-2">Date:</span> {orderItem.createdAt}
               </p>
             </div>
 
@@ -89,10 +82,10 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
                     orderItem.status === "delivered"
                       ? "text-green bg-green-light-6"
                       : orderItem.status === "on-hold"
-                      ? "text-red bg-red-light-6"
-                      : orderItem.status === "processing"
-                      ? "text-yellow bg-yellow-light-4"
-                      : "Unknown Status"
+                        ? "text-red bg-red-light-6"
+                        : orderItem.status === "processing"
+                          ? "text-yellow bg-yellow-light-4"
+                          : "Unknown Status"
                   }`}
                 >
                   {orderItem.status}
@@ -108,18 +101,14 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
 
             <div className="">
               <p className="text-custom-sm text-dark">
-                <span className="font-bold pr-2">Total:</span> $
-                {orderItem.total}
+                <span className="font-bold pr-2">Total:</span> ${orderItem.total}
               </p>
             </div>
 
             <div className="">
               <p className="text-custom-sm text-dark flex items-center">
                 <span className="font-bold pr-2">Actions:</span>{" "}
-                <OrderActions
-                  toggleDetails={toggleDetails}
-                  toggleEdit={toggleEdit}
-                />
+                <OrderActions toggleDetails={toggleDetails} toggleEdit={toggleEdit} />
               </p>
             </div>
           </div>

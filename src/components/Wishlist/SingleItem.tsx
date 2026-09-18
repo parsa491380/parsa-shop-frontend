@@ -19,7 +19,7 @@ const SingleItem = ({ item }) => {
       addItemToCart({
         ...item,
         quantity: 1,
-      })
+      }),
     );
   };
 

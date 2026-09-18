@@ -29,9 +29,7 @@ export const PreviewSliderProvider = ({ children }) => {
   };
 
   return (
-    <PreviewSlider.Provider
-      value={{ isModalPreviewOpen, openPreviewModal, closePreviewModal }}
-    >
+    <PreviewSlider.Provider value={{ isModalPreviewOpen, openPreviewModal, closePreviewModal }}>
       {children}
     </PreviewSlider.Provider>
   );

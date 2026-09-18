@@ -2,10 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import { useCartModalContext } from "@/app/context/CartSidebarModalContext";
-import {
-  removeItemFromCart,
-  selectTotalPrice,
-} from "@/redux/features/cart-slice";
+import { removeItemFromCart, selectTotalPrice } from "@/redux/features/cart-slice";
 import { useAppSelector } from "@/redux/store";
 import { useSelector } from "react-redux";
 import SingleItem from "./SingleItem";
@@ -44,9 +41,7 @@ const CartSidebarModal = () => {
       <div className="flex items-center justify-end">
         <div className="w-full max-w-[500px] shadow-1 bg-white px-4 sm:px-7.5 lg:px-11 relative modal-content">
           <div className="sticky top-0 bg-white flex items-center justify-between pb-7 pt-4 sm:pt-7.5 lg:pt-11 border-b border-gray-3 mb-7.5">
-            <h2 className="font-medium text-dark text-lg sm:text-2xl">
-              Cart View
-            </h2>
+            <h2 className="font-medium text-dark text-lg sm:text-2xl">Cart View</h2>
             <button
               onClick={() => closeCartModal()}
               aria-label="button for close modal"
@@ -79,11 +74,7 @@ const CartSidebarModal = () => {
               {/* <!-- cart item --> */}
               {cartItems.length > 0 ? (
                 cartItems.map((item, key) => (
-                  <SingleItem
-                    key={key}
-                    item={item}
-                    removeItemFromCart={removeItemFromCart}
-                  />
+                  <SingleItem key={key} item={item} removeItemFromCart={removeItemFromCart} />
                 ))
               ) : (
                 <EmptyCart />

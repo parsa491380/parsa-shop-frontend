@@ -63,12 +63,7 @@ const Header = () => {
           {/* <!-- header top left --> */}
           <div className="xl:w-auto flex-col sm:flex-row w-full flex sm:justify-between sm:items-center gap-5 sm:gap-10">
             <Link className="flex-shrink-0" href="/">
-              <Image
-                src="/images/logo/logo.svg"
-                alt="Logo"
-                width={219}
-                height={36}
-              />
+              <Image src="/images/logo/logo.svg" alt="Logo" width={219} height={36} />
             </Link>
 
             <div className="max-w-[475px] w-full">
@@ -144,12 +139,8 @@ const Header = () => {
               </svg>
 
               <div>
-                <span className="block text-2xs text-dark-4 uppercase">
-                  24/7 SUPPORT
-                </span>
-                <p className="font-medium text-custom-sm text-dark">
-                  (+965) 7492-3477
-                </p>
+                <span className="block text-2xs text-dark-4 uppercase">24/7 SUPPORT</span>
+                <p className="font-medium text-custom-sm text-dark">(+965) 7492-3477</p>
               </div>
             </div>
 
@@ -181,19 +172,12 @@ const Header = () => {
                   </svg>
 
                   <div>
-                    <span className="block text-2xs text-dark-4 uppercase">
-                      account
-                    </span>
-                    <p className="font-medium text-custom-sm text-dark">
-                      Sign In
-                    </p>
+                    <span className="block text-2xs text-dark-4 uppercase">account</span>
+                    <p className="font-medium text-custom-sm text-dark">Sign In</p>
                   </div>
                 </Link>
 
-                <button
-                  onClick={handleOpenCartModal}
-                  className="flex items-center gap-2.5"
-                >
+                <button onClick={handleOpenCartModal} className="flex items-center gap-2.5">
                   <span className="inline-block relative">
                     <svg
                       width="24"
@@ -232,12 +216,8 @@ const Header = () => {
                   </span>
 
                   <div>
-                    <span className="block text-2xs text-dark-4 uppercase">
-                      cart
-                    </span>
-                    <p className="font-medium text-custom-sm text-dark">
-                      ${totalPrice}
-                    </p>
+                    <span className="block text-2xs text-dark-4 uppercase">cart</span>
+                    <p className="font-medium text-custom-sm text-dark">${totalPrice}</p>
                   </div>
                 </button>
               </div>
@@ -304,11 +284,7 @@ const Header = () => {
                 <ul className="flex xl:items-center flex-col xl:flex-row gap-5 xl:gap-6">
                   {menuData.map((menuItem, i) =>
                     menuItem.submenu ? (
-                      <Dropdown
-                        key={i}
-                        menuItem={menuItem}
-                        stickyMenu={stickyMenu}
-                      />
+                      <Dropdown key={i} menuItem={menuItem} stickyMenu={stickyMenu} />
                     ) : (
                       <li
                         key={i}
@@ -323,7 +299,7 @@ const Header = () => {
                           {menuItem.title}
                         </Link>
                       </li>
-                    )
+                    ),
                   )}
                 </ul>
               </nav>

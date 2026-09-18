@@ -30,14 +30,10 @@ const OrderDetails = ({ orderItem }: any) => {
 
       <div className="items-center justify-between border-t border-gray-3 py-5 px-7.5 hidden md:flex">
         <div className="min-w-[111px]">
-          <p className="text-custom-sm text-red">
-            #{orderItem.orderId.slice(-8)}
-          </p>
+          <p className="text-custom-sm text-red">#{orderItem.orderId.slice(-8)}</p>
         </div>
         <div className="min-w-[175px]">
-          <p className="text-custom-sm text-dark">
-            {orderItem.createdAt}
-          </p>
+          <p className="text-custom-sm text-dark">{orderItem.createdAt}</p>
         </div>
 
         <div className="min-w-[128px]">
@@ -46,10 +42,10 @@ const OrderDetails = ({ orderItem }: any) => {
               orderItem.status === "delivered"
                 ? "text-green bg-green-light-6"
                 : orderItem.status === "on-hold"
-                ? "text-red bg-red-light-6"
-                : orderItem.status === "processing"
-                ? "text-yellow bg-yellow-light-4"
-                : "Unknown Status"
+                  ? "text-red bg-red-light-6"
+                  : orderItem.status === "processing"
+                    ? "text-yellow bg-yellow-light-4"
+                    : "Unknown Status"
             }`}
           >
             {orderItem.status}
@@ -61,14 +57,11 @@ const OrderDetails = ({ orderItem }: any) => {
         </div> */}
 
         <div className="min-w-[113px]">
-          <p className="text-custom-sm text-dark">
-            {orderItem.total}
-          </p>
+          <p className="text-custom-sm text-dark">{orderItem.total}</p>
         </div>
       </div>
       <div className="px-7.5 w-full">
-        <p className="font-bold">Shipping Address:</p>{" "}
-        <p>942 Aspen Road Encino, CA 91316</p>
+        <p className="font-bold">Shipping Address:</p> <p>942 Aspen Road Encino, CA 91316</p>
       </div>
     </>
   );

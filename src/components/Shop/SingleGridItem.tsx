@@ -26,7 +26,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
       addItemToCart({
         ...item,
         quantity: 1,
-      })
+      }),
     );
   };
 
@@ -36,7 +36,7 @@ const SingleGridItem = ({ item }: { item: Product }) => {
         ...item,
         status: "available",
         quantity: 1,
-      })
+      }),
     );
   };
 
@@ -112,36 +112,11 @@ const SingleGridItem = ({ item }: { item: Product }) => {
 
       <div className="flex items-center gap-2.5 mb-2">
         <div className="flex items-center gap-1">
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={15}
-            height={15}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={15}
-            height={15}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={15}
-            height={15}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={15}
-            height={15}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={15}
-            height={15}
-          />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={15} height={15} />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={15} height={15} />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={15} height={15} />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={15} height={15} />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={15} height={15} />
         </div>
 
         <p className="text-custom-sm">({item.reviews})</p>

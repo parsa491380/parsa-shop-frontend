@@ -32,14 +32,9 @@ const CustomSelect = ({ options }) => {
   };
 
   return (
-    <div
-      className="custom-select custom-select-2 flex-shrink-0 relative"
-      ref={selectRef}
-    >
+    <div className="custom-select custom-select-2 flex-shrink-0 relative" ref={selectRef}>
       <div
-        className={`select-selected whitespace-nowrap ${
-          isOpen ? "select-arrow-active" : ""
-        }`}
+        className={`select-selected whitespace-nowrap ${isOpen ? "select-arrow-active" : ""}`}
         onClick={toggleDropdown}
       >
         {selectedOption.label}
@@ -49,9 +44,7 @@ const CustomSelect = ({ options }) => {
           <div
             key={index}
             onClick={() => handleOptionClick(option)}
-            className={`select-item ${
-              selectedOption === option ? "same-as-selected" : ""
-            }`}
+            className={`select-item ${selectedOption === option ? "same-as-selected" : ""}`}
           >
             {option.label}
           </div>

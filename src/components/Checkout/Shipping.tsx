@@ -11,9 +11,7 @@ const Shipping = () => {
       >
         Ship to a different address?
         <svg
-          className={`fill-current ease-out duration-200 ${
-            dropdown && "rotate-180"
-          }`}
+          className={`fill-current ease-out duration-200 ${dropdown && "rotate-180"}`}
           width="22"
           height="22"
           viewBox="0 0 22 22"

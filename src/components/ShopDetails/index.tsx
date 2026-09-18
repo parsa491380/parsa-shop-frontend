@@ -76,9 +76,7 @@ const ShopDetails = () => {
   const colors = ["red", "blue", "orange", "pink", "purple"];
 
   const alreadyExist = localStorage.getItem("productDetails");
-  const productFromStorage = useAppSelector(
-    (state) => state.productDetailsReducer.value
-  );
+  const productFromStorage = useAppSelector((state) => state.productDetailsReducer.value);
 
   const product = alreadyExist ? JSON.parse(alreadyExist) : productFromStorage;
 
@@ -144,17 +142,11 @@ const ShopDetails = () => {
                       <button
                         onClick={() => setPreviewImg(key)}
                         key={key}
-                        className={`flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${key === previewImg
-                          ? "border-blue"
-                          : "border-transparent"
-                          }`}
+                        className={`flex items-center justify-center w-15 sm:w-25 h-15 sm:h-25 overflow-hidden rounded-lg bg-gray-2 shadow-1 ease-out duration-200 border-2 hover:border-blue ${
+                          key === previewImg ? "border-blue" : "border-transparent"
+                        }`}
                       >
-                        <Image
-                          width={50}
-                          height={50}
-                          src={item}
-                          alt="thumbnail"
-                        />
+                        <Image width={50} height={50} src={item} alt="thumbnail" />
                       </button>
                     ))}
                   </div>
@@ -315,13 +307,8 @@ const ShopDetails = () => {
                   </div>
 
                   <h3 className="font-medium text-custom-1 mb-4.5">
-                    <span className="text-sm sm:text-base text-dark">
-                      Price: ${product.price}
-                    </span>
-                    <span className="line-through">
-                      {" "}
-                      ${product.discountedPrice}{" "}
-                    </span>
+                    <span className="text-sm sm:text-base text-dark">Price: ${product.price}</span>
+                    <span className="line-through"> ${product.discountedPrice} </span>
                   </h3>
 
                   <ul className="flex flex-col gap-2">
@@ -394,8 +381,9 @@ const ShopDetails = () => {
                                   onChange={() => setActiveColor(color)}
                                 />
                                 <div
-                                  className={`flex items-center justify-center w-5.5 h-5.5 rounded-full ${activeColor === color && "border"
-                                    }`}
+                                  className={`flex items-center justify-center w-5.5 h-5.5 rounded-full ${
+                                    activeColor === color && "border"
+                                  }`}
                                   style={{ borderColor: `${color}` }}
                                 >
                                   <span
@@ -433,17 +421,12 @@ const ShopDetails = () => {
 
                                 {/*  */}
                                 <div
-                                  className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${storage === item.id
-                                    ? "border-blue bg-blue"
-                                    : "border-gray-4"
-                                    } `}
+                                  className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${
+                                    storage === item.id ? "border-blue bg-blue" : "border-gray-4"
+                                  } `}
                                 >
                                   <span
-                                    className={
-                                      storage === item.id
-                                        ? "opacity-100"
-                                        : "opacity-0"
-                                    }
+                                    className={storage === item.id ? "opacity-100" : "opacity-0"}
                                   >
                                     <svg
                                       width="24"
@@ -500,18 +483,11 @@ const ShopDetails = () => {
 
                                 {/*  */}
                                 <div
-                                  className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${type === item.id
-                                    ? "border-blue bg-blue"
-                                    : "border-gray-4"
-                                    } `}
+                                  className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${
+                                    type === item.id ? "border-blue bg-blue" : "border-gray-4"
+                                  } `}
                                 >
-                                  <span
-                                    className={
-                                      type === item.id
-                                        ? "opacity-100"
-                                        : "opacity-0"
-                                    }
-                                  >
+                                  <span className={type === item.id ? "opacity-100" : "opacity-0"}>
                                     <svg
                                       width="24"
                                       height="24"
@@ -567,18 +543,11 @@ const ShopDetails = () => {
 
                                 {/*  */}
                                 <div
-                                  className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${sim === item.id
-                                    ? "border-blue bg-blue"
-                                    : "border-gray-4"
-                                    } `}
+                                  className={`mr-2 flex h-4 w-4 items-center justify-center rounded border ${
+                                    sim === item.id ? "border-blue bg-blue" : "border-gray-4"
+                                  } `}
                                 >
-                                  <span
-                                    className={
-                                      sim === item.id
-                                        ? "opacity-100"
-                                        : "opacity-0"
-                                    }
-                                  >
+                                  <span className={sim === item.id ? "opacity-100" : "opacity-0"}>
                                     <svg
                                       width="24"
                                       height="24"
@@ -616,9 +585,7 @@ const ShopDetails = () => {
                         <button
                           aria-label="button for remove product"
                           className="flex items-center justify-center w-12 h-12 ease-out duration-200 hover:text-blue"
-                          onClick={() =>
-                            quantity > 1 && setQuantity(quantity - 1)
-                          }
+                          onClick={() => quantity > 1 && setQuantity(quantity - 1)}
                         >
                           <svg
                             className="fill-current"
@@ -706,10 +673,9 @@ const ShopDetails = () => {
                   <button
                     key={key}
                     onClick={() => setActiveTab(item.id)}
-                    className={`font-medium lg:text-lg ease-out duration-200 hover:text-blue relative before:h-0.5 before:bg-blue before:absolute before:left-0 before:bottom-0 before:ease-out before:duration-200 hover:before:w-full ${activeTab === item.id
-                      ? "text-blue before:w-full"
-                      : "text-dark before:w-0"
-                      }`}
+                    className={`font-medium lg:text-lg ease-out duration-200 hover:text-blue relative before:h-0.5 before:bg-blue before:absolute before:left-0 before:bottom-0 before:ease-out before:duration-200 hover:before:w-full ${
+                      activeTab === item.id ? "text-blue before:w-full" : "text-dark before:w-0"
+                    }`}
                   >
                     {item.title}
                   </button>
@@ -721,49 +687,42 @@ const ShopDetails = () => {
               {/* <!-- tab content one start --> */}
               <div>
                 <div
-                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${activeTab === "tabOne" ? "flex" : "hidden"
-                    }`}
+                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${
+                    activeTab === "tabOne" ? "flex" : "hidden"
+                  }`}
                 >
                   <div className="max-w-[670px] w-full">
-                    <h2 className="font-medium text-2xl text-dark mb-7">
-                      Specifications:
-                    </h2>
+                    <h2 className="font-medium text-2xl text-dark mb-7">Specifications:</h2>
 
                     <p className="mb-6">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                      when an unknown printer took a galley of type and
-                      scrambled it to make a type specimen book.
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry&apos;s standard dummy text ever since the
+                      1500s, when an unknown printer took a galley of type and scrambled it to make
+                      a type specimen book.
                     </p>
                     <p className="mb-6">
-                      It has survived not only five centuries, but also the leap
-                      into electronic typesetting, remaining essentially
-                      unchanged. It was popularised in the 1960s.
+                      It has survived not only five centuries, but also the leap into electronic
+                      typesetting, remaining essentially unchanged. It was popularised in the 1960s.
                     </p>
                     <p>
-                      with the release of Letraset sheets containing Lorem Ipsum
-                      passages, and more recently with desktop publishing
-                      software like Aldus PageMaker including versions.
+                      with the release of Letraset sheets containing Lorem Ipsum passages, and more
+                      recently with desktop publishing software like Aldus PageMaker including
+                      versions.
                     </p>
                   </div>
 
                   <div className="max-w-[447px] w-full">
-                    <h2 className="font-medium text-2xl text-dark mb-7">
-                      Care & Maintenance:
-                    </h2>
+                    <h2 className="font-medium text-2xl text-dark mb-7">Care & Maintenance:</h2>
 
                     <p className="mb-6">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                      when an unknown printer took a galley of type and
-                      scrambled it to make a type specimen book.
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry&apos;s standard dummy text ever since the
+                      1500s, when an unknown printer took a galley of type and scrambled it to make
+                      a type specimen book.
                     </p>
                     <p>
-                      It has survived not only five centuries, but also the leap
-                      into electronic typesetting, remaining essentially
-                      unchanged. It was popularised in the 1960s.
+                      It has survived not only five centuries, but also the leap into electronic
+                      typesetting, remaining essentially unchanged. It was popularised in the 1960s.
                     </p>
                   </div>
                 </div>
@@ -773,8 +732,9 @@ const ShopDetails = () => {
               {/* <!-- tab content two start --> */}
               <div>
                 <div
-                  className={`rounded-xl bg-white shadow-1 p-4 sm:p-6 mt-10 ${activeTab === "tabTwo" ? "block" : "hidden"
-                    }`}
+                  className={`rounded-xl bg-white shadow-1 p-4 sm:p-6 mt-10 ${
+                    activeTab === "tabTwo" ? "block" : "hidden"
+                  }`}
                 >
                   {/* <!-- info item --> */}
                   <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
@@ -792,22 +752,28 @@ const ShopDetails = () => {
                       <p className="text-sm sm:text-base text-dark">Model</p>
                     </div>
                     <div className="w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        iPhone 14 Plus
-                      </p>
+                      <p className="text-sm sm:text-base text-dark">iPhone 14 Plus</p>
                     </div>
                   </div>
 
                   {/* <!-- info item --> */}
                   <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
                     <div className="max-w-[450px] min-w-[140px] w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        Display Size
-                      </p>
+                      <p className="text-sm sm:text-base text-dark">Display Size</p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-sm sm:text-base text-dark">6.7 inches</p>
+                    </div>
+                  </div>
+
+                  {/* <!-- info item --> */}
+                  <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
+                    <div className="max-w-[450px] min-w-[140px] w-full">
+                      <p className="text-sm sm:text-base text-dark">Display Type</p>
                     </div>
                     <div className="w-full">
                       <p className="text-sm sm:text-base text-dark">
-                        6.7 inches
+                        Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (HBM), 1200 nits (peak)
                       </p>
                     </div>
                   </div>
@@ -815,24 +781,7 @@ const ShopDetails = () => {
                   {/* <!-- info item --> */}
                   <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
                     <div className="max-w-[450px] min-w-[140px] w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        Display Type
-                      </p>
-                    </div>
-                    <div className="w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits
-                        (HBM), 1200 nits (peak)
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* <!-- info item --> */}
-                  <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
-                    <div className="max-w-[450px] min-w-[140px] w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        Display Resolution
-                      </p>
+                      <p className="text-sm sm:text-base text-dark">Display Resolution</p>
                     </div>
                     <div className="w-full">
                       <p className="text-sm sm:text-base text-dark">
@@ -847,9 +796,7 @@ const ShopDetails = () => {
                       <p className="text-sm sm:text-base text-dark">Chipset</p>
                     </div>
                     <div className="w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        Apple A15 Bionic (5 nm)
-                      </p>
+                      <p className="text-sm sm:text-base text-dark">Apple A15 Bionic (5 nm)</p>
                     </div>
                   </div>
 
@@ -868,9 +815,7 @@ const ShopDetails = () => {
                   {/* <!-- info item --> */}
                   <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
                     <div className="max-w-[450px] min-w-[140px] w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        Main Camera
-                      </p>
+                      <p className="text-sm sm:text-base text-dark">Main Camera</p>
                     </div>
                     <div className="w-full">
                       <p className="text-sm sm:text-base text-dark">
@@ -882,14 +827,11 @@ const ShopDetails = () => {
                   {/* <!-- info item --> */}
                   <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
                     <div className="max-w-[450px] min-w-[140px] w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        Selfie Camera
-                      </p>
+                      <p className="text-sm sm:text-base text-dark">Selfie Camera</p>
                     </div>
                     <div className="w-full">
                       <p className="text-sm sm:text-base text-dark">
-                        12 MP | 4K@24/25/30/60fps, 1080p@25/30/60/120fps,
-                        gyro-EIS
+                        12 MP | 4K@24/25/30/60fps, 1080p@25/30/60/120fps, gyro-EIS
                       </p>
                     </div>
                   </div>
@@ -897,14 +839,11 @@ const ShopDetails = () => {
                   {/* <!-- info item --> */}
                   <div className="rounded-md even:bg-gray-1 flex py-4 px-4 sm:px-5">
                     <div className="max-w-[450px] min-w-[140px] w-full">
-                      <p className="text-sm sm:text-base text-dark">
-                        Battery Info
-                      </p>
+                      <p className="text-sm sm:text-base text-dark">Battery Info</p>
                     </div>
                     <div className="w-full">
                       <p className="text-sm sm:text-base text-dark">
-                        Li-Ion 4323 mAh, non-removable | 15W wireless (MagSafe),
-                        7.5W wireless (Qi)
+                        Li-Ion 4323 mAh, non-removable | 15W wireless (MagSafe), 7.5W wireless (Qi)
                       </p>
                     </div>
                   </div>
@@ -915,8 +854,9 @@ const ShopDetails = () => {
               {/* <!-- tab content three start --> */}
               <div>
                 <div
-                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${activeTab === "tabThree" ? "flex" : "hidden"
-                    }`}
+                  className={`flex-col sm:flex-row gap-7.5 xl:gap-12.5 mt-12.5 ${
+                    activeTab === "tabThree" ? "flex" : "hidden"
+                  }`}
                 >
                   <div className="max-w-[570px] w-full">
                     <h2 className="font-medium text-2xl text-dark mb-9">
@@ -939,12 +879,8 @@ const ShopDetails = () => {
                             </div>
 
                             <div>
-                              <h3 className="font-medium text-dark">
-                                Davis Dorwart
-                              </h3>
-                              <p className="text-custom-sm">
-                                Serial Entrepreneur
-                              </p>
+                              <h3 className="font-medium text-dark">Davis Dorwart</h3>
+                              <p className="text-custom-sm">Serial Entrepreneur</p>
                             </div>
                           </a>
 
@@ -1032,9 +968,8 @@ const ShopDetails = () => {
                         </div>
 
                         <p className="text-dark mt-6">
-                          “Lorem ipsum dolor sit amet, adipiscing elit. Donec
-                          malesuada justo vitaeaugue suscipit beautiful
-                          vehicula’’
+                          “Lorem ipsum dolor sit amet, adipiscing elit. Donec malesuada justo
+                          vitaeaugue suscipit beautiful vehicula’’
                         </p>
                       </div>
 
@@ -1053,12 +988,8 @@ const ShopDetails = () => {
                             </div>
 
                             <div>
-                              <h3 className="font-medium text-dark">
-                                Davis Dorwart
-                              </h3>
-                              <p className="text-custom-sm">
-                                Serial Entrepreneur
-                              </p>
+                              <h3 className="font-medium text-dark">Davis Dorwart</h3>
+                              <p className="text-custom-sm">Serial Entrepreneur</p>
                             </div>
                           </a>
 
@@ -1146,9 +1077,8 @@ const ShopDetails = () => {
                         </div>
 
                         <p className="text-dark mt-6">
-                          “Lorem ipsum dolor sit amet, adipiscing elit. Donec
-                          malesuada justo vitaeaugue suscipit beautiful
-                          vehicula’’
+                          “Lorem ipsum dolor sit amet, adipiscing elit. Donec malesuada justo
+                          vitaeaugue suscipit beautiful vehicula’’
                         </p>
                       </div>
 
@@ -1167,12 +1097,8 @@ const ShopDetails = () => {
                             </div>
 
                             <div>
-                              <h3 className="font-medium text-dark">
-                                Davis Dorwart
-                              </h3>
-                              <p className="text-custom-sm">
-                                Serial Entrepreneur
-                              </p>
+                              <h3 className="font-medium text-dark">Davis Dorwart</h3>
+                              <p className="text-custom-sm">Serial Entrepreneur</p>
                             </div>
                           </a>
 
@@ -1260,9 +1186,8 @@ const ShopDetails = () => {
                         </div>
 
                         <p className="text-dark mt-6">
-                          “Lorem ipsum dolor sit amet, adipiscing elit. Donec
-                          malesuada justo vitaeaugue suscipit beautiful
-                          vehicula’’
+                          “Lorem ipsum dolor sit amet, adipiscing elit. Donec malesuada justo
+                          vitaeaugue suscipit beautiful vehicula’’
                         </p>
                       </div>
                     </div>
@@ -1270,13 +1195,10 @@ const ShopDetails = () => {
 
                   <div className="max-w-[550px] w-full">
                     <form>
-                      <h2 className="font-medium text-2xl text-dark mb-3.5">
-                        Add a Review
-                      </h2>
+                      <h2 className="font-medium text-2xl text-dark mb-3.5">Add a Review</h2>
 
                       <p className="mb-6">
-                        Your email address will not be published. Required
-                        fields are marked *
+                        Your email address will not be published. Required fields are marked *
                       </p>
 
                       <div className="flex items-center gap-3 mb-7.5">
@@ -1380,12 +1302,8 @@ const ShopDetails = () => {
                           ></textarea>
 
                           <span className="flex items-center justify-between mt-2.5">
-                            <span className="text-custom-sm text-dark-4">
-                              Maximum
-                            </span>
-                            <span className="text-custom-sm text-dark-4">
-                              0/250
-                            </span>
+                            <span className="text-custom-sm text-dark-4">Maximum</span>
+                            <span className="text-custom-sm text-dark-4">0/250</span>
                           </span>
                         </div>
 

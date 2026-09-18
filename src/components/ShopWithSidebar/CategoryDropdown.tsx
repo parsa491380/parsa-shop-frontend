@@ -66,9 +66,7 @@ const CategoryDropdown = ({ categories }) => {
         <p className="text-dark">Category</p>
         <button
           aria-label="button for category dropdown"
-          className={`text-dark ease-out duration-200 ${
-            toggleDropdown && "rotate-180"
-          }`}
+          className={`text-dark ease-out duration-200 ${toggleDropdown && "rotate-180"}`}
         >
           <svg
             className="fill-current"
@@ -90,11 +88,7 @@ const CategoryDropdown = ({ categories }) => {
 
       {/* dropdown && 'shadow-filter */}
       {/* <!-- dropdown menu --> */}
-      <div
-        className={`flex-col gap-3 py-6 pl-6 pr-5.5 ${
-          toggleDropdown ? "flex" : "hidden"
-        }`}
-      >
+      <div className={`flex-col gap-3 py-6 pl-6 pr-5.5 ${toggleDropdown ? "flex" : "hidden"}`}>
         {categories.map((category, key) => (
           <CategoryItem key={key} category={category} />
         ))}

@@ -21,9 +21,7 @@
  * Django remains responsible for storing the actual files.
  */
 
-
 const DJANGO_URL = "http://127.0.0.1:8000";
-
 
 export async function GET(
   _request: Request,
@@ -47,32 +45,21 @@ export async function GET(
      *
      * /media/images/shoe.jpg
      */
-    const mediaPath = path
-      .map((part) => encodeURIComponent(part))
-      .join("/");
+    const mediaPath = path.map((part) => encodeURIComponent(part)).join("/");
 
-
-    const djangoResponse = await fetch(
-      `${DJANGO_URL}/media/${mediaPath}`,
-      {
-        method: "GET",
-        cache: "no-store",
-      },
-    );
-
+    const djangoResponse = await fetch(`${DJANGO_URL}/media/${mediaPath}`, {
+      method: "GET",
+      cache: "no-store",
+    });
 
     /**
      * Django couldn't find the file.
      */
     if (!djangoResponse.ok) {
-      return new Response(
-        "Media file not found.",
-        {
-          status: djangoResponse.status,
-        },
-      );
+      return new Response("Media file not found.", {
+        status: djangoResponse.status,
+      });
     }
-
 
     /**
      * Pass Django's image/file response back to
@@ -80,54 +67,27 @@ export async function GET(
      */
     const headers = new Headers();
 
-
-    const contentType =
-      djangoResponse.headers.get(
-        "content-type",
-      );
+    const contentType = djangoResponse.headers.get("content-type");
 
     if (contentType) {
-      headers.set(
-        "content-type",
-        contentType,
-      );
+      headers.set("content-type", contentType);
     }
 
-
-    const contentLength =
-      djangoResponse.headers.get(
-        "content-length",
-      );
+    const contentLength = djangoResponse.headers.get("content-length");
 
     if (contentLength) {
-      headers.set(
-        "content-length",
-        contentLength,
-      );
+      headers.set("content-length", contentLength);
     }
 
-
-    return new Response(
-      djangoResponse.body,
-      {
-        status: 200,
-        headers,
-      },
-    );
-
+    return new Response(djangoResponse.body, {
+      status: 200,
+      headers,
+    });
   } catch (error) {
+    console.error("Django media proxy error:", error);
 
-    console.error(
-      "Django media proxy error:",
-      error,
-    );
-
-
-    return new Response(
-      "Unable to load media.",
-      {
-        status: 502,
-      },
-    );
+    return new Response("Unable to load media.", {
+      status: 502,
+    });
   }
 }

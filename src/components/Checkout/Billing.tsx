@@ -3,9 +3,7 @@ import React from "react";
 const Billing = () => {
   return (
     <div className="mt-9">
-      <h2 className="font-medium text-dark text-xl sm:text-2xl mb-5.5">
-        Billing details
-      </h2>
+      <h2 className="font-medium text-dark text-xl sm:text-2xl mb-5.5">Billing details</h2>
 
       <div className="bg-white shadow-1 rounded-[10px] p-4 sm:p-8.5">
         <div className="flex flex-col lg:flex-row gap-5 sm:gap-8 mb-5">
@@ -167,11 +165,7 @@ const Billing = () => {
             className="text-dark flex cursor-pointer select-none items-center"
           >
             <div className="relative">
-              <input
-                type="checkbox"
-                id="checkboxLabelTwo"
-                className="sr-only"
-              />
+              <input type="checkbox" id="checkboxLabelTwo" className="sr-only" />
               <div className="mr-2 flex h-4 w-4 items-center justify-center rounded border border-gray-4">
                 <span className="opacity-0">
                   <svg
@@ -181,14 +175,7 @@ const Billing = () => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <rect
-                      x="4"
-                      y="4.00006"
-                      width="16"
-                      height="16"
-                      rx="4"
-                      fill="#3C50E0"
-                    />
+                    <rect x="4" y="4.00006" width="16" height="16" rx="4" fill="#3C50E0" />
                     <path
                       fillRule="evenodd"
                       clipRule="evenodd"

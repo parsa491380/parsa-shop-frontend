@@ -13,132 +13,74 @@
 
 import { useEffect, useState } from "react";
 
-import {
-  getProducts,
-  type StoreProduct,
-} from "@/lib/store-api";
-
+import { getProducts, type StoreProduct } from "@/lib/store-api";
 
 export default function ApiTestPage() {
+  const [products, setProducts] = useState<StoreProduct[]>([]);
 
-  const [products, setProducts] = useState<
-    StoreProduct[]
-  >([]);
+  const [loading, setLoading] = useState(true);
 
-  const [loading, setLoading] =
-    useState(true);
-
-  const [error, setError] =
-    useState<string | null>(null);
-
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-
     async function loadProducts() {
-
       try {
+        const response = await getProducts();
 
-        const response =
-          await getProducts();
-
-        setProducts(
-          response.results,
-        );
-
+        setProducts(response.results);
       } catch (error) {
-
-        setError(
-          error instanceof Error
-            ? error.message
-            : "Unable to load products.",
-        );
-
+        setError(error instanceof Error ? error.message : "Unable to load products.");
       } finally {
-
         setLoading(false);
-
       }
     }
 
-
     loadProducts();
-
   }, []);
 
-
   if (loading) {
-
     return (
       <main className="mx-auto max-w-7xl px-6 py-12">
-
-        <h1 className="text-2xl font-semibold">
-          Loading products...
-        </h1>
-
+        <h1 className="text-2xl font-semibold">Loading products...</h1>
       </main>
     );
   }
-
 
   if (error) {
-
     return (
       <main className="mx-auto max-w-7xl px-6 py-12">
+        <h1 className="text-2xl font-semibold">API Error</h1>
 
-        <h1 className="text-2xl font-semibold">
-          API Error
-        </h1>
-
-        <p className="mt-3 text-red-600">
-          {error}
-        </p>
-
+        <p className="mt-3 text-red-600">{error}</p>
       </main>
     );
   }
-
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-12">
-
       <div className="mb-8">
+        <h1 className="text-3xl font-semibold">Django Products</h1>
 
-        <h1 className="text-3xl font-semibold">
-          Django Products
-        </h1>
-
-        <p className="mt-2 text-sm text-gray-500">
-          Products loaded from Django Oscar.
-        </p>
-
+        <p className="mt-2 text-sm text-gray-500">Products loaded from Django Oscar.</p>
       </div>
 
-
-      <div className="
+      <div
+        className="
         grid
         grid-cols-1
         gap-6
         sm:grid-cols-2
         md:grid-cols-3
         lg:grid-cols-4
-      ">
-
+      "
+      >
         {products.map((product) => {
-
           const primaryImage =
-            product.images.find(
-              (image) => image.is_primary,
-            ) ??
-            product.images[0];
+            product.images.find((image) => image.is_primary) ?? product.images[0];
 
+          const brand = product.attributes.brand;
 
-          const brand =
-            product.attributes.brand;
-
-
-          const price =
-            product.price.price;
-
+          const price = product.price.price;
 
           return (
             <article
@@ -152,26 +94,22 @@ export default function ApiTestPage() {
                 bg-white
               "
             >
-
               {/* -------------------------------------------
                   Product image
                   ------------------------------------------- */}
 
-              <div className="
+              <div
+                className="
                 relative
                 aspect-square
                 overflow-hidden
                 bg-gray-100
-              ">
-
+              "
+              >
                 {primaryImage ? (
-
                   <img
                     src={primaryImage.url}
-                    alt={
-                      primaryImage.caption ||
-                      product.title
-                    }
+                    alt={primaryImage.caption || product.title}
                     className="
                       h-full
                       w-full
@@ -181,112 +119,93 @@ export default function ApiTestPage() {
                       group-hover:scale-105
                     "
                   />
-
                 ) : (
-
-                  <div className="
+                  <div
+                    className="
                     flex
                     h-full
                     items-center
                     justify-center
                     text-sm
                     text-gray-400
-                  ">
+                  "
+                  >
                     No image
                   </div>
-
                 )}
-
               </div>
-
 
               {/* -------------------------------------------
                   Product information
                   ------------------------------------------- */}
 
               <div className="p-4">
-
                 {brand && (
-
-                  <p className="
+                  <p
+                    className="
                     text-sm
                     text-gray-500
-                  ">
+                  "
+                  >
                     {brand}
                   </p>
-
                 )}
 
-
-                <h2 className="
+                <h2
+                  className="
                   mt-1
                   text-lg
                   font-semibold
                   text-gray-900
-                ">
+                "
+                >
                   {product.title}
                 </h2>
 
-
                 {price && (
-
-                  <p className="
+                  <p
+                    className="
                     mt-3
                     text-base
                     font-semibold
                     text-gray-900
-                  ">
-                    {price}
-                    {" "}
-                    {product.price.currency}
+                  "
+                  >
+                    {price} {product.price.currency}
                   </p>
-
                 )}
 
-
                 {product.children.length > 0 && (
-
-                  <p className="
+                  <p
+                    className="
                     mt-2
                     text-sm
                     text-gray-500
-                  ">
-                    {product.children.length}
-                    {" "}
-                    {product.children.length === 1
-                      ? "variant"
-                      : "variants"}
+                  "
+                  >
+                    {product.children.length}{" "}
+                    {product.children.length === 1 ? "variant" : "variants"}
                   </p>
-
                 )}
-
               </div>
-
             </article>
           );
         })}
-
       </div>
 
-
       {products.length === 0 && (
-
-        <div className="
+        <div
+          className="
           rounded-lg
           border
           border-dashed
           p-12
           text-center
-        ">
-
-          <p className="text-gray-500">
-            No public products found.
-          </p>
-
+        "
+        >
+          <p className="text-gray-500">No public products found.</p>
         </div>
-
       )}
-
     </main>
   );
 }

@@ -27,7 +27,7 @@ const ProductItem = ({ item }: { item: Product }) => {
       addItemToCart({
         ...item,
         quantity: 1,
-      })
+      }),
     );
   };
 
@@ -37,7 +37,7 @@ const ProductItem = ({ item }: { item: Product }) => {
         ...item,
         status: "available",
         quantity: 1,
-      })
+      }),
     );
   };
 
@@ -117,36 +117,11 @@ const ProductItem = ({ item }: { item: Product }) => {
 
       <div className="flex items-center gap-2.5 mb-2">
         <div className="flex items-center gap-1">
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
-          <Image
-            src="/images/icons/icon-star.svg"
-            alt="star icon"
-            width={14}
-            height={14}
-          />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={14} height={14} />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={14} height={14} />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={14} height={14} />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={14} height={14} />
+          <Image src="/images/icons/icon-star.svg" alt="star icon" width={14} height={14} />
         </div>
 
         <p className="text-custom-sm">({item.reviews})</p>

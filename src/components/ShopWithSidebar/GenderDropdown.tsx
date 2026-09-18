@@ -63,9 +63,7 @@ const GenderDropdown = ({ genders }) => {
         <button
           onClick={() => setToggleDropdown(!toggleDropdown)}
           aria-label="button for gender dropdown"
-          className={`text-dark ease-out duration-200 ${
-            toggleDropdown && "rotate-180"
-          }`}
+          className={`text-dark ease-out duration-200 ${toggleDropdown && "rotate-180"}`}
         >
           <svg
             className="fill-current"
@@ -86,11 +84,7 @@ const GenderDropdown = ({ genders }) => {
       </div>
 
       {/* <!-- dropdown menu --> */}
-      <div
-        className={`flex-col gap-3 py-6 pl-6 pr-5.5 ${
-          toggleDropdown ? "flex" : "hidden"
-        }`}
-      >
+      <div className={`flex-col gap-3 py-6 pl-6 pr-5.5 ${toggleDropdown ? "flex" : "hidden"}`}>
         {genders.map((gender, key) => (
           <GenderItem key={key} category={gender} />
         ))}

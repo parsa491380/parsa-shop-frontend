@@ -11,9 +11,7 @@ const Contact = () => {
           <div className="flex flex-col xl:flex-row gap-7.5">
             <div className="xl:max-w-[370px] w-full bg-white rounded-xl shadow-1">
               <div className="py-5 px-4 sm:px-7.5 border-b border-gray-3">
-                <p className="font-medium text-xl text-dark">
-                  Contact Information
-                </p>
+                <p className="font-medium text-xl text-dark">Contact Information</p>
               </div>
 
               <div className="p-4 sm:p-7.5">

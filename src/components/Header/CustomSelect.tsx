@@ -33,9 +33,7 @@ const CustomSelect = ({ options }) => {
   return (
     <div className="dropdown-content custom-select relative" style={{ width: "200px" }}>
       <div
-        className={`select-selected whitespace-nowrap ${
-          isOpen ? "select-arrow-active" : ""
-        }`}
+        className={`select-selected whitespace-nowrap ${isOpen ? "select-arrow-active" : ""}`}
         onClick={toggleDropdown}
       >
         {selectedOption.label}
@@ -45,9 +43,7 @@ const CustomSelect = ({ options }) => {
           <div
             key={index}
             onClick={() => handleOptionClick(option)}
-            className={`select-item ${
-              selectedOption === option ? "same-as-selected" : ""
-            }`}
+            className={`select-item ${selectedOption === option ? "same-as-selected" : ""}`}
           >
             {option.label}
           </div>

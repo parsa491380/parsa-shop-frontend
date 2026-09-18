@@ -22,8 +22,7 @@ const Newsletter = () => {
                 Don&apos;t Miss Out Latest Trends & Offers
               </h2>
               <p className="text-white">
-                Register to receive news about the latest offers & discount
-                codes
+                Register to receive news about the latest offers & discount codes
               </p>
             </div>
 

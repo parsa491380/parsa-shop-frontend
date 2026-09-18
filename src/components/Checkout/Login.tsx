@@ -15,9 +15,7 @@ const Login = () => {
         <span className="flex items-center gap-2.5 pl-1 font-medium text-dark">
           Click here to login
           <svg
-            className={`${
-              dropdown && "rotate-180"
-            } fill-current ease-out duration-200`}
+            className={`${dropdown && "rotate-180"} fill-current ease-out duration-200`}
             width="22"
             height="22"
             viewBox="0 0 22 22"
@@ -35,14 +33,8 @@ const Login = () => {
       </div>
 
       {/* <!-- dropdown menu --> */}
-      <div
-        className={`${
-          dropdown ? "block" : "hidden"
-        } pt-7.5 pb-8.5 px-4 sm:px-8.5`}
-      >
-        <p className="text-custom-sm mb-6">
-          If you didn&apos;t Logged in, Please Log in first.
-        </p>
+      <div className={`${dropdown ? "block" : "hidden"} pt-7.5 pb-8.5 px-4 sm:px-8.5`}>
+        <p className="text-custom-sm mb-6">If you didn&apos;t Logged in, Please Log in first.</p>
 
         <div className="mb-5">
           <label htmlFor="name" className="block mb-2.5">

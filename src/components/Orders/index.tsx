@@ -52,9 +52,7 @@ const Orders = () => {
               <SingleOrder key={key} orderItem={orderItem} smallView={false} />
             ))
           ) : (
-            <p className="py-9.5 px-4 sm:px-7.5 xl:px-10">
-              You don&apos;t have any orders!
-            </p>
+            <p className="py-9.5 px-4 sm:px-7.5 xl:px-10">You don&apos;t have any orders!</p>
           )}
         </div>
 

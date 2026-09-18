@@ -24,8 +24,7 @@ const Error = () => {
               </h2>
 
               <p className="max-w-[410px] w-full mx-auto mb-7.5">
-                The page you were looking for appears to have been moved,
-                deleted or does not exist.
+                The page you were looking for appears to have been moved, deleted or does not exist.
               </p>
 
               <Link

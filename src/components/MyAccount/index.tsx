@@ -29,18 +29,11 @@ const MyAccount = () => {
               <div className="flex xl:flex-col">
                 <div className="hidden lg:flex flex-wrap items-center gap-5 py-6 px-4 sm:px-7.5 xl:px-9 border-r xl:border-r-0 xl:border-b border-gray-3">
                   <div className="max-w-[64px] w-full h-16 rounded-full overflow-hidden">
-                    <Image
-                      src="/images/users/user-04.jpg"
-                      alt="user"
-                      width={64}
-                      height={64}
-                    />
+                    <Image src="/images/users/user-04.jpg" alt="user" width={64} height={64} />
                   </div>
 
                   <div>
-                    <p className="font-medium text-dark mb-0.5">
-                      James Septimus
-                    </p>
+                    <p className="font-medium text-dark mb-0.5">James Septimus</p>
                     <p className="text-custom-xs">Member Since Sep 2020</p>
                   </div>
                 </div>
@@ -50,9 +43,7 @@ const MyAccount = () => {
                     <button
                       onClick={() => setActiveTab("dashboard")}
                       className={`flex items-center rounded-md gap-2.5 py-3 px-4.5 ease-out duration-200 hover:bg-blue hover:text-white ${
-                        activeTab === "dashboard"
-                          ? "text-white bg-blue"
-                          : "text-dark-2 bg-gray-1"
+                        activeTab === "dashboard" ? "text-white bg-blue" : "text-dark-2 bg-gray-1"
                       }`}
                     >
                       <svg
@@ -93,9 +84,7 @@ const MyAccount = () => {
                     <button
                       onClick={() => setActiveTab("orders")}
                       className={`flex items-center rounded-md gap-2.5 py-3 px-4.5 ease-out duration-200 hover:bg-blue hover:text-white ${
-                        activeTab === "orders"
-                          ? "text-white bg-blue"
-                          : "text-dark-2 bg-gray-1"
+                        activeTab === "orders" ? "text-white bg-blue" : "text-dark-2 bg-gray-1"
                       }`}
                     >
                       <svg
@@ -131,9 +120,7 @@ const MyAccount = () => {
                     <button
                       onClick={() => setActiveTab("downloads")}
                       className={`flex items-center rounded-md gap-2.5 py-3 px-4.5 ease-out duration-200 hover:bg-blue hover:text-white ${
-                        activeTab === "downloads"
-                          ? "text-white bg-blue"
-                          : "text-dark-2 bg-gray-1"
+                        activeTab === "downloads" ? "text-white bg-blue" : "text-dark-2 bg-gray-1"
                       }`}
                     >
                       <svg
@@ -159,9 +146,7 @@ const MyAccount = () => {
                     <button
                       onClick={() => setActiveTab("addresses")}
                       className={`flex items-center rounded-md gap-2.5 py-3 px-4.5 ease-out duration-200 hover:bg-blue hover:text-white ${
-                        activeTab === "addresses"
-                          ? "text-white bg-blue"
-                          : "text-dark-2 bg-gray-1"
+                        activeTab === "addresses" ? "text-white bg-blue" : "text-dark-2 bg-gray-1"
                       }`}
                     >
                       <svg
@@ -221,9 +206,7 @@ const MyAccount = () => {
                     <button
                       onClick={() => setActiveTab("logout")}
                       className={`flex items-center rounded-md gap-2.5 py-3 px-4.5 ease-out duration-200 hover:bg-blue hover:text-white ${
-                        activeTab === "logout"
-                          ? "text-white bg-blue"
-                          : "text-dark-2 bg-gray-1"
+                        activeTab === "logout" ? "text-white bg-blue" : "text-dark-2 bg-gray-1"
                       }`}
                     >
                       <svg
@@ -262,19 +245,15 @@ const MyAccount = () => {
             >
               <p className="text-dark">
                 Hello Annie (not Annie?
-                <a
-                  href="#"
-                  className="text-red ease-out duration-200 hover:underline"
-                >
+                <a href="#" className="text-red ease-out duration-200 hover:underline">
                   Log Out
                 </a>
                 )
               </p>
 
               <p className="text-custom-sm mt-4">
-                From your account dashboard you can view your recent orders,
-                manage your shipping and billing addresses, and edit your
-                password and account details.
+                From your account dashboard you can view your recent orders, manage your shipping
+                and billing addresses, and edit your password and account details.
               </p>
             </div>
             {/* <!-- dashboard tab content end -->
@@ -307,9 +286,7 @@ const MyAccount = () => {
             >
               <div className="xl:max-w-[370px] w-full bg-white shadow-1 rounded-xl">
                 <div className="flex items-center justify-between py-5 px-4 sm:pl-7.5 sm:pr-6 border-b border-gray-3">
-                  <p className="font-medium text-xl text-dark">
-                    Shipping Address
-                  </p>
+                  <p className="font-medium text-xl text-dark">Shipping Address</p>
 
                   <button
                     className="text-dark ease-out duration-200 hover:text-blue"
@@ -439,9 +416,7 @@ const MyAccount = () => {
 
               <div className="xl:max-w-[370px] w-full bg-white shadow-1 rounded-xl">
                 <div className="flex items-center justify-between py-5 px-4 sm:pl-7.5 sm:pr-6 border-b border-gray-3">
-                  <p className="font-medium text-xl text-dark">
-                    Billing Address
-                  </p>
+                  <p className="font-medium text-xl text-dark">Billing Address</p>
 
                   <button
                     className="text-dark ease-out duration-200 hover:text-blue"
@@ -652,13 +627,10 @@ const MyAccount = () => {
                 </div>
 
                 <p className="text-custom-sm mt-5 mb-9">
-                  This will be how your name will be displayed in the account
-                  section and in reviews
+                  This will be how your name will be displayed in the account section and in reviews
                 </p>
 
-                <p className="font-medium text-xl sm:text-2xl text-dark mb-7">
-                  Password Change
-                </p>
+                <p className="font-medium text-xl sm:text-2xl text-dark mb-7">Password Change</p>
 
                 <div className="bg-white shadow-1 rounded-xl p-4 sm:p-8.5">
                   <div className="mb-5">
@@ -690,10 +662,7 @@ const MyAccount = () => {
                   </div>
 
                   <div className="mb-5">
-                    <label
-                      htmlFor="confirmNewPassword"
-                      className="block mb-2.5"
-                    >
+                    <label htmlFor="confirmNewPassword" className="block mb-2.5">
                       Confirm New Password
                     </label>
 

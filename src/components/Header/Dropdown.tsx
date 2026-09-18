@@ -40,9 +40,7 @@ const Dropdown = ({ menuItem, stickyMenu }) => {
       {/* <!-- Dropdown Start --> */}
       <ul
         className={`dropdown ${dropdownToggler && "flex"} ${
-          stickyMenu
-            ? "xl:group-hover:translate-y-0"
-            : "xl:group-hover:translate-y-0"
+          stickyMenu ? "xl:group-hover:translate-y-0" : "xl:group-hover:translate-y-0"
         }`}
       >
         {menuItem.submenu.map((item, i) => (

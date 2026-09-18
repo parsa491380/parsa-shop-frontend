@@ -8,7 +8,9 @@
   z-index: 100000;
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.95);
-  transition: opacity 200ms, visibility 200ms;
+  transition:
+    opacity 200ms,
+    visibility 200ms;
 }
 
 .asyncGallery.is-visible {
@@ -36,7 +38,9 @@
   visibility: hidden;
   overflow: hidden;
   transform: translate(-50%, -50%);
-  transition: opacity 200ms, visibility 200ms;
+  transition:
+    opacity 200ms,
+    visibility 200ms;
   max-width: 770px;
 }
 
@@ -148,7 +152,9 @@
   width: 30px;
   height: 30px;
   z-index: 1000;
-  transition: transform 200ms, opacity 200ms;
+  transition:
+    transform 200ms,
+    opacity 200ms;
   transform: translateY(-50%);
 }
 

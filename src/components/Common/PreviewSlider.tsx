@@ -27,8 +27,9 @@ const PreviewSliderModal = () => {
 
   return (
     <div
-      className={`preview-slider w-full h-screen  z-999999 inset-0 flex justify-center items-center bg-[#000000F2] bg-opacity-70 ${isModalPreviewOpen ? "fixed" : "hidden"
-        }`}
+      className={`preview-slider w-full h-screen  z-999999 inset-0 flex justify-center items-center bg-[#000000F2] bg-opacity-70 ${
+        isModalPreviewOpen ? "fixed" : "hidden"
+      }`}
     >
       <button
         onClick={() => closePreviewModal()}
@@ -73,10 +74,7 @@ const PreviewSliderModal = () => {
           </svg>
         </button>
 
-        <button
-          className="absolute right-100 p-5 cursor-pointer z-10"
-          onClick={handleNext}
-        >
+        <button className="absolute right-100 p-5 cursor-pointer z-10" onClick={handleNext}>
           <svg
             width="36"
             height="36"
