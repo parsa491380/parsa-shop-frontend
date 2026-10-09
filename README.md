@@ -1,29 +1,67 @@
-# Free eCommerce Template for Next.js - NextMerce
+# Shoes & Clothing Store - Next.js Frontend
 
-The free Next.js eCommerce template is a lite version of the NextMerce Next.js eCommerce boilerplate, designed to streamline the launch and management of your online store.
+This is the storefront application built from the free NextMerce template.
 
-![NextMerce](https://github.com/user-attachments/assets/57155689-a756-4222-8af7-134e556acae2)
+## Architecture
 
-While NextMerce Pro features advanced functionalities, seamless integration, and customizable options, providing all the essential tools needed to build and expand your business, the lite version offers a basic Next.js template specifically crafted for eCommerce websites. Both versions ensure superior performance and flexibility, all powered by Next.js.
+```text
+Browser
+  -> Next.js App Router
+  -> same-origin /api/*
+  -> Django REST API
+  -> Django Oscar
+```
 
-### NextMerce Free VS NextMerce Pro
+Next.js is responsible for UI/presentation. Django/Oscar is responsible for ecommerce truth.
 
-| ✨ Features                   | 🎁 NextMerce Free | 🔥 NextMerce Pro             |
-| ----------------------------- | ----------------- | ---------------------------- |
-| Next.js Pages                 | Static            | Dynamic Boilerplate Template |
-| Components                    | Limited           | All According to Demo        |
-| eCommerce Functionality       | Included          | Included                     |
-| Integrations (DB, Auth, etc.) | Not Included      | Included                     |
-| Community Support             | Included          | Included                     |
-| Premium Email Support         | Not Included      | Included                     |
-| Lifetime Free Updates         | Included          | Included                     |
+## Run locally
 
-#### [🚀 Live Demo](https://demo.nextmerce.com/)
+```bash
+npm install
+```
 
-#### [🌐 Visit Website](https://nextmerce.com/)
+Create `.env.local` from `.env.example`:
 
-## Update Logs
+```env
+DJANGO_INTERNAL_URL=http://127.0.0.1:8000
+NEXT_PUBLIC_STORE_NAME=My Store
+NEXT_PUBLIC_STORE_EMAIL=
+NEXT_PUBLIC_STORE_PHONE=
+NEXT_PUBLIC_STORE_ADDRESS=
+```
 
-Version 0.1.2 - [Mar 16, 2026]
+Then:
 
-- Update Next.js, React, and React DOM dependencies, add baseline-browser-mapping
+```bash
+npm run dev
+```
+
+Open:
+http://127.0.0.1:3000
+
+Django must be running on port 8000.
+
+## Important folders
+
+- `src/app/(site)/` storefront routes/layout
+- `src/app/api/[...path]/` same-origin Django API proxy
+- `src/app/media/[...path]/` Django media proxy for development
+- `src/components/` UI
+- `src/app/context/StoreContext.tsx` server-backed basket/customer state
+- `src/lib/api.ts` generic HTTP/CSRF client
+- `src/lib/store-api.ts` typed ecommerce API client
+
+## Ecommerce rules
+
+- Do not calculate authoritative order totals in the browser.
+- Do not create a second local cart. Oscar's basket is authoritative.
+- Parent products require variant selection before adding to basket.
+- Never mark an order paid from frontend code.
+
+## Current limitation
+
+A real payment provider has not yet been selected/configured. The backend therefore supports development-only pending orders but blocks production order creation until payment verification is implemented.
+
+## AI context
+
+Read `FRONTEND_AI_README.md` and `../PROJECT_STATUS_CURRENT.md` before changing architecture.
