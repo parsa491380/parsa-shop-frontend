@@ -6,34 +6,15 @@ import SearchForm from "../Blog/SearchForm";
 import LatestPosts from "../Blog/LatestPosts";
 import LatestProducts from "../Blog/LatestProducts";
 import Categories from "../Blog/Categories";
-import shopData from "../Shop/shopData";
 
 const BlogGridWithSidebar = () => {
   const categories = [
-    {
-      name: "Desktop",
-      products: 10,
-    },
-    {
-      name: "Laptop",
-      products: 12,
-    },
-    {
-      name: "Monitor",
-      products: 30,
-    },
-    {
-      name: "UPS",
-      products: 23,
-    },
-    {
-      name: "Phone",
-      products: 10,
-    },
-    {
-      name: "Watch",
-      products: 13,
-    },
+    { name: "Shoes", products: 0 },
+    { name: "Clothing", products: 0 },
+    { name: "Sneakers", products: 0 },
+    { name: "Running", products: 0 },
+    { name: "Hoodies", products: 0 },
+    { name: "Jackets", products: 0 },
   ];
 
   return (
@@ -179,7 +160,7 @@ const BlogGridWithSidebar = () => {
               <LatestPosts blogs={blogData} />
 
               {/* <!-- Latest Products box --> */}
-              <LatestProducts products={shopData} />
+              <LatestProducts />
 
               {/* <!-- Popular Category box --> */}
               <Categories categories={categories} />
@@ -196,56 +177,56 @@ const BlogGridWithSidebar = () => {
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Desktop
+                      Shoes
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Macbook
+                      Clothing
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      PC
+                      Sneakers
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Watch
+                      Running
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      USB Cable
+                      Hoodies
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Mouse
+                      Jackets
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Windows PC
+                      Streetwear
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Monitor
+                      New arrivals
                     </a>
                   </div>
                 </div>

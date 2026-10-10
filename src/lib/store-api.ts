@@ -1,323 +1,344 @@
-/**
- * =========================================================
- * Store API
- * =========================================================
- *
- * This file contains the TypeScript representation of
- * the data coming from Django Oscar.
- *
- * The important idea is:
- *
- * Django/Oscar
- *      ↓
- * JSON
- *      ↓
- * TypeScript types
- *      ↓
- * React components
- *
- * This keeps our frontend code strongly typed.
- */
-
 import { apiFetch } from "./api";
-
-// =========================================================
-// Product price
-// =========================================================
+import type { Product } from "@/types/product";
 
 export interface ProductPrice {
-  /**
-   * Whether Oscar says this product can currently be bought.
-   */
   available: boolean;
-
-  /**
-   * Human-readable availability message.
-   */
   availability_message: string | null;
-
-  /**
-   * Currency returned by Oscar.
-   *
-   * Example:
-   *
-   * EUR
-   * USD
-   */
   currency: string | null;
-
-  /**
-   * Final price displayed to the customer.
-   */
   price: string | null;
-
-  /**
-   * Price before tax.
-   */
   price_excl_tax: string | null;
-
-  /**
-   * Tax amount.
-   */
   tax: string | null;
-
-  /**
-   * Whether the returned price already includes tax.
-   */
   tax_included: boolean;
-
-  /**
-   * Current stock quantity.
-   *
-   * null means Oscar isn't exposing a stock value
-   * for this particular product.
-   */
   stock: number | null;
-
-  /**
-   * SKU used by our store.
-   */
   sku: string | null;
 }
 
-// =========================================================
-// Product image
-// =========================================================
-
 export interface ProductImage {
   url: string;
-
   caption: string;
-
   is_primary: boolean;
 }
 
-// =========================================================
-// Product variant
-// =========================================================
-
 export interface ProductVariant {
-  /**
-   * Oscar's database ID.
-   *
-   * This ID will eventually be sent back to Django
-   * when the customer adds the variant to the basket.
-   */
   id: number;
-
   title: string;
-
-  attributes: Record<string, string>;
-
-  price: ProductPrice;
-}
-
-// =========================================================
-// Product
-// =========================================================
-
-export interface StoreProduct {
-  id: number;
-
-  title: string;
-
   slug: string;
-
-  description: string;
-
-  rating: number;
-
-  images: ProductImage[];
-
   attributes: Record<string, string>;
-
-  categories: StoreCategory[];
-
-  /**
-   * Possible values:
-   *
-   * standalone
-   * parent
-   */
-  structure: string;
-
-  /**
-   * Price information for the product.
-   *
-   * For a parent product this can represent the
-   * currently available pricing calculated by Oscar.
-   */
+  images: ProductImage[];
   price: ProductPrice;
-
-  /**
-   * Product variants.
-   *
-   * Example:
-   *
-   * [
-   *   size 41,
-   *   size 42,
-   *   size 43
-   * ]
-   */
-  children: ProductVariant[];
 }
-
-// =========================================================
-// Paginated product response
-// =========================================================
-
-export interface ProductListResponse {
-  count: number;
-
-  next: string | null;
-
-  previous: string | null;
-
-  results: StoreProduct[];
-}
-
-// =========================================================
-// Get products
-// =========================================================
-
-export async function getProducts(params?: {
-  search?: string;
-  category?: string;
-  page?: number;
-}): Promise<ProductListResponse> {
-  const searchParams = new URLSearchParams();
-
-  if (params?.search) {
-    searchParams.set("search", params.search);
-  }
-
-  if (params?.category) {
-    searchParams.set("category", params.category);
-  }
-
-  if (params?.page) {
-    searchParams.set("page", String(params.page));
-  }
-
-  const query = searchParams.toString();
-
-  const url = query ? `/api/products/?${query}` : "/api/products/";
-
-  /**
-   * Django performs the actual database query.
-   *
-   * Next.js simply asks for the data.
-   */
-  return apiFetch<ProductListResponse>(url);
-}
-
-// =========================================================
-// Get one product
-// =========================================================
-
-export async function getProduct(slug: string): Promise<StoreProduct> {
-  return apiFetch<StoreProduct>(`/api/products/${encodeURIComponent(slug)}/`);
-}
-
-// =========================================================
-// Get categories
-// =========================================================
 
 export interface StoreCategory {
   id: number;
-
   name: string;
-
   slug: string;
+  product_count?: number;
+  depth?: number;
+  image?: string | null;
 }
 
-export async function getCategories(): Promise<StoreCategory[]> {
+export interface StoreProduct {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  rating: number;
+  images: ProductImage[];
+  attributes: Record<string, string>;
+  categories: StoreCategory[];
+  structure: string;
+  price: ProductPrice;
+  children: ProductVariant[];
+}
+
+export interface ProductListResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: StoreProduct[];
+}
+
+export interface StoreBasketLine {
+  id: number;
+  product_id: number;
+  title: string;
+  slug: string;
+  quantity: number;
+  unit_price: string;
+  line_total: string;
+  currency: string | null;
+  sku: string | null;
+  image: string | null;
+  availability: {
+    available: boolean;
+    message: string;
+  };
+}
+
+export interface StoreBasket {
+  id: number | null;
+  status: string;
+  num_items: number;
+  num_lines: number;
+  is_empty: boolean;
+  is_shipping_required: boolean;
+  currency: string | null;
+  total: string | null;
+  total_excl_tax: string | null;
+  lines: StoreBasketLine[];
+}
+
+export interface StoreUser {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  is_staff: boolean;
+}
+
+export interface StoreAddress {
+  id: number;
+  first_name: string;
+  last_name: string;
+  line1: string;
+  line2: string;
+  line3: string;
+  line4: string;
+  state: string;
+  postcode: string;
+  country: string;
+  country_name: string;
+  phone_number: string;
+  is_default_for_shipping: boolean;
+  is_default_for_billing: boolean;
+}
+
+export interface StoreCountry {
+  code: string;
+  name: string;
+}
+
+export interface StoreOrderLine {
+  id: number;
+  product_id: number | null;
+  title: string;
+  quantity: number;
+  unit_price: string;
+  line_total: string;
+}
+
+export interface StoreOrder {
+  id: number;
+  number: string;
+  status: string;
+  date_placed: string;
+  currency: string;
+  total_incl_tax: string;
+  total_excl_tax: string;
+  shipping_charge: string;
+  lines: StoreOrderLine[];
+  shipping_address: {
+    first_name: string;
+    last_name: string;
+    line1: string;
+    line2: string;
+    state: string;
+    postcode: string;
+    country: string;
+    phone_number: string;
+    notes: string;
+  } | null;
+}
+
+function buildQuery(params?: Record<string, string | number | undefined>) {
+  const search = new URLSearchParams();
+
+  for (const [key, value] of Object.entries(params ?? {})) {
+    if (value !== undefined && value !== "") {
+      search.set(key, String(value));
+    }
+  }
+
+  return search.toString();
+}
+
+export function getProducts(params?: {
+  search?: string;
+  category?: string;
+  page?: number;
+  sort?: "latest" | "oldest" | "priority" | "price_asc" | "price_desc";
+}) {
+  const query = buildQuery(params);
+  return apiFetch<ProductListResponse>(query ? `/api/products/?${query}` : "/api/products/");
+}
+
+export function getProduct(slug: string) {
+  return apiFetch<StoreProduct>(`/api/products/${encodeURIComponent(slug)}/`);
+}
+
+export function getCategories() {
   return apiFetch<StoreCategory[]>("/api/categories/");
 }
 
 /**
- * =========================================================
- * Convert an Oscar product into the format expected by
- * the existing NextMerce Product components.
- * =========================================================
- *
- * NextMerce currently expects:
- *
- *     title
- *     reviews
- *     price
- *     discountedPrice
- *     id
- *     imgs
- *
- * Oscar gives us:
- *
- *     title
- *     images
- *     price
- *     rating
- *     ...
- *
- * Instead of rewriting every NextMerce component, we convert
- * Oscar's data into the shape those components already know.
+ * Convert Oscar's product representation to the small legacy
+ * NextMerce Product shape used by existing visual components.
  */
-
-export function adaptOscarProduct(product: StoreProduct) {
-  /**
-   * Oscar can return several product images.
-   *
-   * NextMerce expects two image arrays:
-   *
-   *     thumbnails
-   *     previews
-   *
-   * For now we use the same images in both arrays.
-   *
-   * Later we can create optimized thumbnail images on the
-   * Django side.
-   */
-
+export function adaptOscarProduct(product: StoreProduct): Product {
   const imageUrls = product.images.map((image) => image.url);
-
-  /**
-   * Oscar's current API gives us a price.
-   *
-   * We have not connected Oscar offers/discounts yet.
-   *
-   * Therefore:
-   *
-   *     price = current Oscar price
-   *     discountedPrice = current Oscar price
-   *
-   * Later, when we expose original/discounted pricing from
-   * Oscar, this adapter will handle it.
-   */
-
   const currentPrice = Number(product.price.price ?? 0);
 
   return {
     title: product.title,
-
-    /**
-     * Our current Oscar API provides rating, not the total
-     * number of reviews.
-     *
-     * Until we build the review API, use 0 here rather than
-     * pretending that the rating is a review count.
-     */
     reviews: 0,
-
+    rating: product.rating,
+    reviewCount: 0,
     price: currentPrice,
-
     discountedPrice: currentPrice,
-
     id: product.id,
-
+    slug: product.slug,
+    currency: product.price.currency ?? undefined,
+    available: product.price.available,
+    stock: product.price.stock,
+    hasVariants: product.children.length > 0,
     imgs: {
       thumbnails: imageUrls,
-
       previews: imageUrls,
     },
   };
+}
+
+export function getCountries() {
+  return apiFetch<StoreCountry[]>("/api/countries/");
+}
+
+export function getBasket() {
+  return apiFetch<StoreBasket>("/api/basket/");
+}
+
+export function addBasketItem(productId: number, quantity = 1) {
+  return apiFetch<{ basket: StoreBasket; line_id: number }>("/api/basket/items/", {
+    method: "POST",
+    body: JSON.stringify({
+      product_id: productId,
+      quantity,
+    }),
+  });
+}
+
+export function updateBasketLine(lineId: number, quantity: number) {
+  return apiFetch<StoreBasket>(`/api/basket/items/${lineId}/`, {
+    method: "PUT",
+    body: JSON.stringify({ quantity }),
+  });
+}
+
+export function removeBasketLine(lineId: number) {
+  return apiFetch<StoreBasket>(`/api/basket/items/${lineId}/`, { method: "DELETE" });
+}
+
+export function clearBasket() {
+  return apiFetch<StoreBasket>("/api/basket/", {
+    method: "DELETE",
+  });
+}
+
+export function getCurrentUser() {
+  return apiFetch<{ user: StoreUser }>("/api/auth/me/");
+}
+
+export function login(email: string, password: string) {
+  return apiFetch<{ user: StoreUser }>("/api/auth/login/", {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+  });
+}
+
+export function register(input: {
+  email: string;
+  password: string;
+  first_name: string;
+  last_name: string;
+}) {
+  return apiFetch<{ user: StoreUser }>("/api/auth/register/", {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
+}
+
+export function logout() {
+  return apiFetch<{ detail: string }>("/api/auth/logout/", {
+    method: "POST",
+  });
+}
+
+export function getAddresses() {
+  return apiFetch<StoreAddress[]>("/api/addresses/");
+}
+
+export function createAddress(input: {
+  first_name: string;
+  last_name: string;
+  line1: string;
+  line2?: string;
+  line3?: string;
+  line4?: string;
+  state?: string;
+  postcode: string;
+  country: string;
+  phone_number?: string;
+  is_default_for_shipping?: boolean;
+  is_default_for_billing?: boolean;
+}) {
+  return apiFetch<{ id: number; detail: string }>("/api/addresses/", {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
+}
+
+export function deleteAddress(addressId: number) {
+  return apiFetch<void>(`/api/addresses/${addressId}/`, {
+    method: "DELETE",
+  });
+}
+
+export function getOrders() {
+  return apiFetch<StoreOrder[]>("/api/orders/");
+}
+
+export function getShippingMethods() {
+  return apiFetch<
+    Array<{
+      code: string;
+      name: string;
+      description: string;
+      price: string;
+      currency: string;
+    }>
+  >("/api/shipping/methods/");
+}
+
+export function createOrder(input: {
+  first_name: string;
+  last_name: string;
+  line1: string;
+  line2?: string;
+  city?: string;
+  state?: string;
+  postcode: string;
+  country: string;
+  phone_number?: string;
+  notes?: string;
+}) {
+  return apiFetch<{
+    order: StoreOrder;
+    payment: {
+      status: string;
+      required: boolean;
+      message: string;
+    };
+  }>("/api/checkout/orders/", {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
 }

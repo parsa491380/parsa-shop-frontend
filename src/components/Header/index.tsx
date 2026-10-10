@@ -4,20 +4,21 @@ import Link from "next/link";
 import CustomSelect from "./CustomSelect";
 import { menuData } from "./menuData";
 import Dropdown from "./Dropdown";
-import { useAppSelector } from "@/redux/store";
-import { useSelector } from "react-redux";
-import { selectTotalPrice } from "@/redux/features/cart-slice";
+import { useStore } from "@/app/context/StoreContext";
 import { useCartModalContext } from "@/app/context/CartSidebarModalContext";
 import Image from "next/image";
+import { getCategories } from "@/lib/store-api";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
   const { openCartModal } = useCartModalContext();
+  const { basket, user } = useStore();
 
-  const product = useAppSelector((state) => state.cartReducer.items);
-  const totalPrice = useSelector(selectTotalPrice);
+  const productCount = basket?.num_items ?? 0;
+  const totalPrice = basket?.total ?? "0.00";
+  const currency = basket?.currency ?? "";
 
   const handleOpenCartModal = () => {
     openCartModal();
@@ -34,18 +35,15 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleStickyMenu);
-  });
 
-  const options = [
-    { label: "All Categories", value: "0" },
-    { label: "Desktop", value: "1" },
-    { label: "Laptop", value: "2" },
-    { label: "Monitor", value: "3" },
-    { label: "Phone", value: "4" },
-    { label: "Watch", value: "5" },
-    { label: "Mouse", value: "6" },
-    { label: "Tablet", value: "7" },
-  ];
+    return () => {
+      window.removeEventListener("scroll", handleStickyMenu);
+    };
+  }, []);
+
+  // Category filtering is handled on the Shop page from real Oscar data.
+  // Keep the header selector neutral until the menu is wired to those categories.
+  const options = [{ label: "All Categories", value: "0" }];
 
   return (
     <header
@@ -67,7 +65,15 @@ const Header = () => {
             </Link>
 
             <div className="max-w-[475px] w-full">
-              <form>
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  const query = searchQuery.trim();
+                  window.location.href = query
+                    ? `/shop-with-sidebar?search=${encodeURIComponent(query)}`
+                    : "/shop-with-sidebar";
+                }}
+              >
                 <div className="flex items-center">
                   <CustomSelect options={options} />
 
@@ -140,7 +146,7 @@ const Header = () => {
 
               <div>
                 <span className="block text-2xs text-dark-4 uppercase">24/7 SUPPORT</span>
-                <p className="font-medium text-custom-sm text-dark">(+965) 7492-3477</p>
+                <p className="font-medium text-custom-sm text-dark">Customer support</p>
               </div>
             </div>
 
@@ -149,7 +155,7 @@ const Header = () => {
 
             <div className="flex w-full lg:w-auto justify-between items-center gap-5">
               <div className="flex items-center gap-5">
-                <Link href="/signin" className="flex items-center gap-2.5">
+                <Link href={user ? "/my-account" : "/signin"} className="flex items-center gap-2.5">
                   <svg
                     width="24"
                     height="24"
@@ -173,7 +179,9 @@ const Header = () => {
 
                   <div>
                     <span className="block text-2xs text-dark-4 uppercase">account</span>
-                    <p className="font-medium text-custom-sm text-dark">Sign In</p>
+                    <p className="font-medium text-custom-sm text-dark">
+                      {user ? user.first_name || "My Account" : "Sign In"}
+                    </p>
                   </div>
                 </Link>
 
@@ -211,13 +219,15 @@ const Header = () => {
                     </svg>
 
                     <span className="flex items-center justify-center font-medium text-2xs absolute -right-2 -top-2.5 bg-blue w-4.5 h-4.5 rounded-full text-white">
-                      {product.length}
+                      {productCount}
                     </span>
                   </span>
 
                   <div>
                     <span className="block text-2xs text-dark-4 uppercase">cart</span>
-                    <p className="font-medium text-custom-sm text-dark">${totalPrice}</p>
+                    <p className="font-medium text-custom-sm text-dark">
+                      {totalPrice} {currency}
+                    </p>
                   </div>
                 </button>
               </div>

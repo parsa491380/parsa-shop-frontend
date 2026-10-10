@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { siteConfig } from "@/lib/site-config";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -30,7 +31,7 @@ const Footer = () => {
                     />
                   </svg>
                 </span>
-                685 Market Street,Las Vegas, LA 95820,United States.
+                {siteConfig.address || "Store address configured by the owner."}
               </li>
 
               <li>
@@ -59,7 +60,7 @@ const Footer = () => {
                       fill="#3C50E0"
                     />
                   </svg>
-                  (+099) 532-786-9843
+                  {siteConfig.phone || "Store phone configured by the owner."}
                 </a>
               </li>
 
@@ -79,7 +80,7 @@ const Footer = () => {
                       fill="#3C50E0"
                     />
                   </svg>
-                  support@example.com
+                  {siteConfig.email || "Store email configured by the owner."}
                 </a>
               </li>
             </ul>

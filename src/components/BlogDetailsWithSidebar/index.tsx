@@ -5,7 +5,6 @@ import LatestPosts from "../Blog/LatestPosts";
 import LatestProducts from "../Blog/LatestProducts";
 import blogData from "../BlogGrid/blogData";
 import Image from "next/image";
-import shopData from "../Shop/shopData";
 
 const BlogDetailsWithSidebar = () => {
   return (
@@ -132,7 +131,7 @@ const BlogDetailsWithSidebar = () => {
                           className="inline-flex hover:text-white border border-gray-3 bg-white py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                           href="#"
                         >
-                          Desktop
+                          Shoes
                         </a>
                       </li>
 
@@ -141,7 +140,7 @@ const BlogDetailsWithSidebar = () => {
                           className="inline-flex hover:text-white border border-gray-3 bg-white py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                           href="#"
                         >
-                          Macbook
+                          Streetwear
                         </a>
                       </li>
 
@@ -251,7 +250,7 @@ const BlogDetailsWithSidebar = () => {
               <LatestPosts blogs={blogData} />
 
               {/* <!-- Latest Products box --> */}
-              <LatestProducts products={shopData} />
+              <LatestProducts />
 
               {/* <!-- Popular Category box --> */}
               <div className="shadow-1 bg-white rounded-xl mt-7.5">
@@ -262,35 +261,35 @@ const BlogDetailsWithSidebar = () => {
                 <div className="p-4 sm:p-6">
                   <div className="flex flex-col gap-3">
                     <button className="group flex items-center justify-between ease-out duration-200 text-dark hover:text-blue">
-                      Desktop
+                      Shoes
                       <span className="inline-flex rounded-[30px] bg-gray-2 text-custom-xs px-1.5 ease-out duration-200 group-hover:text-white group-hover:bg-blue">
                         12
                       </span>
                     </button>
 
                     <button className="group flex items-center justify-between ease-out duration-200 text-dark hover:text-blue">
-                      Laptop
+                      Clothing
                       <span className="inline-flex rounded-[30px] bg-gray-2 text-custom-xs px-1.5 ease-out duration-200 group-hover:text-white group-hover:bg-blue">
                         25
                       </span>
                     </button>
 
                     <button className="group flex items-center justify-between ease-out duration-200 text-dark hover:text-blue">
-                      Monitor
+                      Sneakers
                       <span className="inline-flex rounded-[30px] bg-gray-2 text-custom-xs px-1.5 ease-out duration-200 group-hover:text-white group-hover:bg-blue">
                         23
                       </span>
                     </button>
 
                     <button className="group flex items-center justify-between ease-out duration-200 text-dark hover:text-blue">
-                      UPS
+                      Running
                       <span className="inline-flex rounded-[30px] bg-gray-2 text-custom-xs px-1.5 ease-out duration-200 group-hover:text-white group-hover:bg-blue">
                         09
                       </span>
                     </button>
 
                     <button className="group flex items-center justify-between ease-out duration-200 text-dark hover:text-blue">
-                      Phone
+                      Hoodies
                       <span className="inline-flex rounded-[30px] bg-gray-2 text-custom-xs px-1.5 ease-out duration-200 group-hover:text-white group-hover:bg-blue">
                         54
                       </span>
@@ -304,14 +303,14 @@ const BlogDetailsWithSidebar = () => {
                     </button>
 
                     <button className="group flex items-center justify-between ease-out duration-200 text-dark hover:text-blue">
-                      Watch
+                      Jackets
                       <span className="inline-flex rounded-[30px] bg-gray-2 text-custom-xs px-1.5 ease-out duration-200 group-hover:text-white group-hover:bg-blue">
                         17
                       </span>
                     </button>
 
                     <button className="group flex items-center justify-between ease-out duration-200 text-dark hover:text-blue">
-                      Mouse
+                      Accessories
                       <span className="inline-flex rounded-[30px] bg-gray-2 text-custom-xs px-1.5 ease-out duration-200 group-hover:text-white group-hover:bg-blue">
                         08
                       </span>
@@ -332,14 +331,14 @@ const BlogDetailsWithSidebar = () => {
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Desktop
+                      Shoes
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Macbook
+                      Streetwear
                     </a>
 
                     <a
@@ -353,35 +352,35 @@ const BlogDetailsWithSidebar = () => {
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Watch
+                      Jackets
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      USB Cable
+                      New arrivals
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Mouse
+                      Accessories
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Windows PC
+                      Collections
                     </a>
 
                     <a
                       className="inline-flex hover:text-white border border-gray-3 py-2 px-4 rounded-md ease-out duration-200 hover:bg-blue hover:border-blue"
                       href="#"
                     >
-                      Monitor
+                      Sneakers
                     </a>
                   </div>
                 </div>

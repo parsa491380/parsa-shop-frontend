@@ -8,6 +8,7 @@ import Footer from "../../components/Footer";
 import { ModalProvider } from "../context/QuickViewModalContext";
 import { CartModalProvider } from "../context/CartSidebarModalContext";
 import { ReduxProvider } from "@/redux/provider";
+import { StoreProvider } from "../context/StoreContext";
 import QuickViewModal from "@/components/Common/QuickViewModal";
 import CartSidebarModal from "@/components/Common/CartSidebarModal";
 import { PreviewSliderProvider } from "../context/PreviewSliderContext";
@@ -15,6 +16,7 @@ import PreviewSliderModal from "@/components/Common/PreviewSlider";
 
 import ScrollToTop from "@/components/Common/ScrollToTop";
 import PreLoader from "@/components/Common/PreLoader";
+import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState<boolean>(true);
@@ -29,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {loading ? (
           <PreLoader />
         ) : (
-          <>
+          <StoreProvider>
             <ReduxProvider>
               <CartModalProvider>
                 <ModalProvider>
@@ -40,13 +42,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <QuickViewModal />
                     <CartSidebarModal />
                     <PreviewSliderModal />
+                    <Toaster position="bottom-right" />
                   </PreviewSliderProvider>
                 </ModalProvider>
               </CartModalProvider>
             </ReduxProvider>
             <ScrollToTop />
             <Footer />
-          </>
+          </StoreProvider>
         )}
       </body>
     </html>

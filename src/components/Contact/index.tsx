@@ -1,5 +1,6 @@
 import React from "react";
 import Breadcrumb from "../Common/Breadcrumb";
+import { siteConfig } from "@/lib/site-config";
 
 const Contact = () => {
   return (
@@ -31,7 +32,7 @@ const Contact = () => {
                         fill="#3C50E0"
                       />
                     </svg>
-                    Name: James Septimus
+                    Store: {siteConfig.name}
                   </p>
 
                   <p className="flex items-center gap-4">
@@ -59,7 +60,7 @@ const Contact = () => {
                         fill="#3C50E0"
                       />
                     </svg>
-                    Phone: 1234 567890
+                    Phone: {siteConfig.phone || "Configured by the store owner."}
                   </p>
 
                   <p className="flex gap-4">
@@ -78,7 +79,7 @@ const Contact = () => {
                         fill="#3C50E0"
                       />
                     </svg>
-                    Address: 7398 Smoke Ranch RoadLas Vegas, Nevada 89128
+                    Address: {siteConfig.address || "Configured by the store owner."}
                   </p>
                 </div>
               </div>
