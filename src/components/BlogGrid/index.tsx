@@ -6,7 +6,7 @@ import BlogItem from "../Blog/BlogItem";
 const BlogGrid = () => {
   return (
     <>
-      <Breadcrumb title={"Blog Grid"} pages={["blog grid"]} />{" "}
+      <Breadcrumb title={"وبلاگ"} pages={["blog grid"]} />{" "}
       <section className="overflow-hidden py-20 bg-gray-2">
         <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-7.5">
@@ -23,7 +23,7 @@ const BlogGrid = () => {
                 <li>
                   <button
                     id="paginationLeft"
-                    aria-label="button for pagination left"
+                    aria-label="صفحه قبلی"
                     type="button"
                     disabled
                     className="flex items-center justify-center w-8 h-9 ease-out duration-200 rounded-[3px disabled:text-gray-4"
@@ -110,7 +110,7 @@ const BlogGrid = () => {
                 <li>
                   <button
                     id="paginationLeft"
-                    aria-label="button for pagination left"
+                    aria-label="صفحه قبلی"
                     type="button"
                     className="flex items-center justify-center w-8 h-9 ease-out duration-200 rounded-[3px] hover:text-white hover:bg-blue disabled:text-gray-4"
                   >

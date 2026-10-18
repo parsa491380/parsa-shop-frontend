@@ -29,7 +29,7 @@ export default function ApiTestPage() {
 
         setProducts(response.results);
       } catch (error) {
-        setError(error instanceof Error ? error.message : "Unable to load products.");
+        setError(error instanceof Error ? error.message : "بارگذاری محصولات ممکن نیست.");
       } finally {
         setLoading(false);
       }
@@ -41,7 +41,7 @@ export default function ApiTestPage() {
   if (loading) {
     return (
       <main className="mx-auto max-w-7xl px-6 py-12">
-        <h1 className="text-2xl font-semibold">Loading products...</h1>
+        <h1 className="text-2xl font-semibold">در حال بارگزاری محصولات ...</h1>
       </main>
     );
   }
@@ -49,7 +49,7 @@ export default function ApiTestPage() {
   if (error) {
     return (
       <main className="mx-auto max-w-7xl px-6 py-12">
-        <h1 className="text-2xl font-semibold">API Error</h1>
+        <h1 className="text-2xl font-semibold">مشکلی پیش آمده است.</h1>
 
         <p className="mt-3 text-red-600">{error}</p>
       </main>
@@ -130,7 +130,7 @@ export default function ApiTestPage() {
                     text-gray-400
                   "
                   >
-                    No image
+                    بدون تصویر
                   </div>
                 )}
               </div>
@@ -203,7 +203,7 @@ export default function ApiTestPage() {
           text-center
         "
         >
-          <p className="text-gray-500">No public products found.</p>
+          <p className="text-gray-500">هیچ محصولی یافت نشد.</p>
         </div>
       )}
     </main>

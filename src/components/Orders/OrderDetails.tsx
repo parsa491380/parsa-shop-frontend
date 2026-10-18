@@ -20,11 +20,11 @@ const OrderDetails = ({ orderItem }: any) => {
         </div> */}
 
         <div className="min-w-[113px]">
-          <p className="text-custom-sm text-dark">Total</p>
+          <p className="text-custom-sm text-dark">مجموع</p>
         </div>
 
         {/* <div className="min-w-[113px]">
-          <p className="text-custom-sm text-dark">Action</p>
+          <p className="text-custom-sm text-dark">عملیات</p>
         </div> */}
       </div>
 
@@ -45,7 +45,7 @@ const OrderDetails = ({ orderItem }: any) => {
                   ? "text-red bg-red-light-6"
                   : orderItem.status === "processing"
                     ? "text-yellow bg-yellow-light-4"
-                    : "Unknown Status"
+                    : "وضعیت نامشخص"
             }`}
           >
             {orderItem.status}

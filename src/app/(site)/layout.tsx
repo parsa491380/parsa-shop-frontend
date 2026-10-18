@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   }, []);
 
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="fa" dir="rtl" suppressHydrationWarning={true}>
       <body>
         {loading ? (
           <PreLoader />

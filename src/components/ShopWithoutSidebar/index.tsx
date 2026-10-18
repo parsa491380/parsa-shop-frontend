@@ -28,7 +28,7 @@ export default function ShopWithoutSidebar() {
         const response = await getProducts({ search, sort: "latest" });
         if (active) setProducts(response.results.map(adaptOscarProduct));
       } catch (err) {
-        if (active) setError(err instanceof Error ? err.message : "Unable to load products.");
+        if (active) setError(err instanceof Error ? err.message : "بارگذاری محصولات ممکن نیست.");
       } finally {
         if (active) setLoading(false);
       }
@@ -42,7 +42,7 @@ export default function ShopWithoutSidebar() {
 
   return (
     <>
-      <Breadcrumb title="Shop" pages={["shop"]} />
+      <Breadcrumb title="فروشگاه" pages={["shop"]} />
       <section className="overflow-hidden bg-gray-2 py-12 lg:py-20">
         <div className="mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0">
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
@@ -63,12 +63,12 @@ export default function ShopWithoutSidebar() {
           )}
           {!error && loading && (
             <div className="rounded-xl bg-white p-10 text-center text-gray-5 shadow-1">
-              Loading products…
+              در حال بارگذاری محصولات…
             </div>
           )}
           {!error && !loading && products.length === 0 && (
             <div className="rounded-xl bg-white p-10 text-center shadow-1">
-              <p className="text-dark">No products found.</p>
+              <p className="text-dark">محصولی پیدا نشد.</p>
               <Link href="/shop-with-sidebar" className="mt-4 inline-block text-blue">
                 Open the catalogue
               </Link>

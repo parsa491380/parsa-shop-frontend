@@ -18,7 +18,7 @@ export default function LatestProducts() {
   return (
     <div className="mt-7.5 rounded-xl bg-white shadow-1">
       <div className="border-b border-gray-3 px-4 py-4.5 sm:px-6">
-        <h2 className="text-lg font-medium text-dark">Latest Products</h2>
+        <h2 className="text-lg font-medium text-dark">آخرین محصولات</h2>
       </div>
 
       <div className="p-4 sm:p-6">
@@ -51,14 +51,14 @@ export default function LatestProducts() {
                   </h3>
 
                   <p className="text-custom-sm">
-                    Price: {product.discountedPrice} {product.currency ?? ""}
+                    قیمت : {product.discountedPrice} {product.currency ?? ""}
                   </p>
                 </div>
               </div>
             );
           })}
 
-          {products.length === 0 && <p className="text-sm text-gray-5">No products available.</p>}
+          {products.length === 0 && <p className="text-sm text-gray-5">محصولی موجود نیست.</p>}
         </div>
       </div>
     </div>

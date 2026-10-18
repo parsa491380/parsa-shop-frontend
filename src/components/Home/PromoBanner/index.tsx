@@ -11,7 +11,7 @@ const PromoBanner = () => {
             <span className="block font-medium text-xl text-dark mb-3">Apple iPhone 14 Plus</span>
 
             <h2 className="font-bold text-xl lg:text-heading-4 xl:text-heading-3 text-dark mb-5">
-              UP TO 30% OFF
+              تا ۳۰٪ تخفیف
             </h2>
 
             <p>
@@ -23,7 +23,7 @@ const PromoBanner = () => {
               href="#"
               className="inline-flex font-medium text-custom-sm text-white bg-blue py-[11px] px-9.5 rounded-md ease-out duration-200 hover:bg-blue-dark mt-7.5"
             >
-              Buy Now
+              همین حالا بخرید
             </a>
           </div>
 
@@ -51,16 +51,16 @@ const PromoBanner = () => {
               <span className="block text-lg text-dark mb-1.5">Foldable Motorised Treadmill</span>
 
               <h2 className="font-bold text-xl lg:text-heading-4 text-dark mb-2.5">
-                Workout At Home
+                ورزش در خانه
               </h2>
 
-              <p className="font-semibold text-custom-1 text-teal">Flat 20% off</p>
+              <p className="font-semibold text-custom-1 text-teal">۲۰٪ تخفیف</p>
 
               <a
                 href="#"
                 className="inline-flex font-medium text-custom-sm text-white bg-teal py-2.5 px-8.5 rounded-md ease-out duration-200 hover:bg-teal-dark mt-9"
               >
-                Grab Now
+                همین حالا ببینید
               </a>
             </div>
           </div>
@@ -83,14 +83,14 @@ const PromoBanner = () => {
               </h2>
 
               <p className="max-w-[285px] text-custom-sm">
-                The aerospace-grade titanium case strikes the perfect balance of everything.
+                طراحی تیتانیومی مقاوم با ترکیبی متعادل از زیبایی و کارایی.
               </p>
 
               <a
                 href="#"
                 className="inline-flex font-medium text-custom-sm text-white bg-orange py-2.5 px-8.5 rounded-md ease-out duration-200 hover:bg-orange-dark mt-7.5"
               >
-                Buy Now
+                همین حالا بخرید
               </a>
             </div>
           </div>

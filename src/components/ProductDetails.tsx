@@ -90,12 +90,12 @@ export default function ProductDetails({ product }: { product: StoreProduct }) {
     const productId = selectedVariant?.id ?? product.id;
 
     if (product.structure === "parent" && !selectedVariant) {
-      setMessage("Please choose a product option first.");
+      setMessage("لطفاً ابتدا گزینه‌های محصول را انتخاب کنید.");
       return;
     }
 
     if (!effectivePrice.available) {
-      setMessage(effectivePrice.availability_message || "This product is unavailable.");
+      setMessage(effectivePrice.availability_message || "این محصول در حال حاضر موجود نیست.");
       return;
     }
 
@@ -103,11 +103,9 @@ export default function ProductDetails({ product }: { product: StoreProduct }) {
       setAdding(true);
       setMessage(null);
       await addToBasket(productId, quantity);
-      setMessage("Added to cart.");
+      setMessage("محصول به سبد خرید اضافه شد.");
     } catch (error) {
-      setMessage(
-        error instanceof Error ? error.message : "Unable to add the product to your cart.",
-      );
+      setMessage(error instanceof Error ? error.message : "افزودن محصول به سبد خرید ممکن نیست.");
     } finally {
       setAdding(false);
     }
@@ -134,7 +132,7 @@ export default function ProductDetails({ product }: { product: StoreProduct }) {
                     priority
                   />
                 ) : (
-                  <span className="text-gray-4">No product image</span>
+                  <span className="text-gray-4">تصویری برای محصول وجود ندارد</span>
                 )}
               </div>
 
@@ -163,7 +161,7 @@ export default function ProductDetails({ product }: { product: StoreProduct }) {
 
             <div className="flex flex-col justify-center">
               <div className="mb-2 text-sm text-gray-5">
-                {product.attributes.brand || product.categories[0]?.name || "Product"}
+                {product.attributes.brand || product.categories[0]?.name || "محصول"}
               </div>
 
               <h1 className="text-2xl font-semibold text-dark sm:text-3xl">{product.title}</h1>
@@ -180,7 +178,7 @@ export default function ProductDetails({ product }: { product: StoreProduct }) {
                     />
                   ))}
                 </div>
-                <span className="text-sm text-gray-5">{product.rating.toFixed(1)} rating</span>
+                <span className="text-sm text-gray-5">{product.rating.toFixed(1)} امتیاز</span>
               </div>
 
               <div className="mt-6 text-2xl font-semibold text-dark">
@@ -190,10 +188,10 @@ export default function ProductDetails({ product }: { product: StoreProduct }) {
               <div className="mt-4 rounded-lg bg-gray-1 p-4">
                 <p className="text-sm text-gray-5">
                   {effectivePrice.availability_message ||
-                    (effectivePrice.available ? "Available" : "Currently unavailable")}
+                    (effectivePrice.available ? "موجود" : "ناموجود")}
                 </p>
                 {effectivePrice.stock !== null && effectivePrice.stock !== undefined && (
-                  <p className="mt-1 text-sm text-gray-5">Stock: {effectivePrice.stock}</p>
+                  <p className="mt-1 text-sm text-gray-5">موجودی : {effectivePrice.stock}</p>
                 )}
               </div>
 
@@ -250,25 +248,25 @@ export default function ProductDetails({ product }: { product: StoreProduct }) {
                   disabled={adding || !effectivePrice.available || maxQuantity < 1}
                   className="rounded-md bg-blue px-8 py-3 font-medium text-white hover:bg-blue-dark disabled:cursor-not-allowed disabled:bg-gray-4"
                 >
-                  {adding ? "Adding…" : "Add to cart"}
+                  {adding ? "در حال افزودن…" : "افزودن به سبد خرید"}
                 </button>
 
                 <Link
                   href="/cart"
                   className="rounded-md border border-gray-3 bg-white px-8 py-3 font-medium text-dark hover:bg-gray-1"
                 >
-                  View cart
+                  مشاهده سبد خرید
                 </Link>
               </div>
 
               {message && <p className="mt-4 text-sm text-blue">{message}</p>}
 
               <div className="mt-8 border-t border-gray-3 pt-7">
-                <h2 className="font-medium text-dark">Description</h2>
+                <h2 className="font-medium text-dark">توضیحات</h2>
                 <div
                   className="prose prose-sm mt-3 max-w-none text-gray-5"
                   dangerouslySetInnerHTML={{
-                    __html: product.description || "No description available.",
+                    __html: product.description || "توضیحی برای این محصول ثبت نشده است.",
                   }}
                 />
               </div>

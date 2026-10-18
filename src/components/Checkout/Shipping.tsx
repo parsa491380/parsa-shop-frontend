@@ -71,7 +71,7 @@ const Shipping = () => {
           <input
             type="text"
             name="address"
-            placeholder="House number and street name"
+            placeholder="پلاک و نام خیابان"
             className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
           />
 
@@ -79,7 +79,7 @@ const Shipping = () => {
             <input
               type="text"
               name="address"
-              placeholder="Apartment, suite, unit, etc. (optional)"
+              placeholder="واحد، آپارتمان و غیره (اختیاری)"
               className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
             />
           </div>
@@ -99,7 +99,7 @@ const Shipping = () => {
 
         <div className="mb-5">
           <label htmlFor="country" className="block mb-2.5">
-            Country
+            کشور
           </label>
 
           <input
@@ -111,7 +111,7 @@ const Shipping = () => {
 
         <div className="mb-5">
           <label htmlFor="phone" className="block mb-2.5">
-            Phone <span className="text-red">*</span>
+            تلفن <span className="text-red">*</span>
           </label>
 
           <input
@@ -123,7 +123,7 @@ const Shipping = () => {
 
         <div>
           <label htmlFor="email" className="block mb-2.5">
-            Email Address <span className="text-red">*</span>
+            نشانی ایمیل <span className="text-red">*</span>
           </label>
 
           <input

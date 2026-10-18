@@ -59,7 +59,7 @@ export default function ShopWithSidebar() {
         setTotal(response.count);
       } catch (err) {
         if (!active) return;
-        setError(err instanceof Error ? err.message : "Unable to load products.");
+        setError(err instanceof Error ? err.message : "بارگذاری محصولات ممکن نیست.");
       } finally {
         if (active) setLoading(false);
       }
@@ -87,7 +87,7 @@ export default function ShopWithSidebar() {
 
   return (
     <>
-      <Breadcrumb title="Shop" pages={["shop"]} />
+      <Breadcrumb title="فروشگاه" pages={["shop"]} />
 
       <section className="overflow-hidden bg-gray-2 py-12 lg:py-20">
         <div className="mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0">
@@ -96,13 +96,13 @@ export default function ShopWithSidebar() {
               onClick={() => setSidebarOpen(true)}
               className="rounded-md bg-dark px-5 py-2.5 font-medium text-white"
             >
-              Filters
+              فیلترها
             </button>
             <Link
               href="/cart"
               className="rounded-md border border-gray-3 bg-white px-5 py-2.5 font-medium text-dark"
             >
-              Cart
+              سبد خرید
             </Link>
           </div>
 
@@ -113,7 +113,7 @@ export default function ShopWithSidebar() {
               }`}
             >
               <div className="mb-6 flex items-center justify-between xl:hidden">
-                <h2 className="font-medium text-dark">Filters</h2>
+                <h2 className="font-medium text-dark">فیلترها</h2>
                 <button onClick={() => setSidebarOpen(false)} className="text-2xl">
                   ×
                 </button>
@@ -122,9 +122,9 @@ export default function ShopWithSidebar() {
               <div className="flex flex-col gap-5">
                 <div className="rounded-lg bg-white p-5 shadow-1">
                   <div className="mb-4 flex items-center justify-between">
-                    <h3 className="font-medium text-dark">Categories</h3>
+                    <h3 className="font-medium text-dark">دسته‌بندی‌ها</h3>
                     <button onClick={clearFilters} className="text-sm text-blue">
-                      Clear
+                      پاک کردن
                     </button>
                   </div>
 
@@ -135,7 +135,7 @@ export default function ShopWithSidebar() {
                     }}
                     className={`mb-2 block w-full rounded px-3 py-2 text-left text-sm ${!category ? "bg-blue text-white" : "hover:bg-gray-1"}`}
                   >
-                    All categories
+                    همه دسته‌بندی‌ها
                   </button>
 
                   {categories.map((item) => (
@@ -162,12 +162,12 @@ export default function ShopWithSidebar() {
                 </div>
 
                 <div className="rounded-lg bg-white p-5 shadow-1">
-                  <h3 className="mb-4 font-medium text-dark">What are you looking for?</h3>
+                  <h3 className="mb-4 font-medium text-dark">دنبال چه چیزی هستید؟</h3>
                   <form onSubmit={submitSearch}>
                     <input
                       value={search}
                       onChange={(event) => setSearch(event.target.value)}
-                      placeholder="Search products..."
+                      placeholder="جستجوی محصولات…"
                       className="w-full rounded-md border border-gray-3 bg-gray-1 px-4 py-3 outline-none focus:border-blue"
                     />
                   </form>
@@ -177,7 +177,7 @@ export default function ShopWithSidebar() {
 
             {sidebarOpen && (
               <button
-                aria-label="Close filters"
+                aria-label="بستن فیلترها"
                 onClick={() => setSidebarOpen(false)}
                 className="fixed inset-0 z-[9999] bg-dark/40 xl:hidden"
               />
@@ -195,14 +195,14 @@ export default function ShopWithSidebar() {
                       }}
                       className="rounded-md border border-gray-3 bg-gray-1 px-4 py-2.5 text-sm outline-none"
                     >
-                      <option value="latest">Latest products</option>
-                      <option value="oldest">Old products</option>
-                      <option value="price_asc">Price: low to high</option>
-                      <option value="price_desc">Price: high to low</option>
+                      <option value="latest">جدیدترین محصولات</option>
+                      <option value="oldest">قدیمی‌ترین محصولات</option>
+                      <option value="price_asc">قیمت: کم به زیاد</option>
+                      <option value="price_desc">قیمت: زیاد به کم</option>
                     </select>
 
                     <span className="text-sm text-gray-5">
-                      {loading ? "Loading…" : `${total} product${total === 1 ? "" : "s"}`}
+                      {loading ? "در حال بارگذاری…" : `${total} product${total === 1 ? "" : "s"}`}
                     </span>
                   </div>
 
@@ -211,13 +211,13 @@ export default function ShopWithSidebar() {
                       onClick={() => setView("grid")}
                       className={`rounded-md border px-3 py-2 ${view === "grid" ? "border-blue bg-blue text-white" : "border-gray-3 bg-gray-1 text-dark"}`}
                     >
-                      Grid
+                      شبکه‌ای
                     </button>
                     <button
                       onClick={() => setView("list")}
                       className={`rounded-md border px-3 py-2 ${view === "list" ? "border-blue bg-blue text-white" : "border-gray-3 bg-gray-1 text-dark"}`}
                     >
-                      List
+                      فهرستی
                     </button>
                   </div>
                 </div>
@@ -234,7 +234,7 @@ export default function ShopWithSidebar() {
                       </span>
                     )}
                     <button onClick={clearFilters} className="text-blue">
-                      Clear filters
+                      پاک کردن فیلترها
                     </button>
                   </div>
                 )}
@@ -248,15 +248,15 @@ export default function ShopWithSidebar() {
 
               {!error && loading && (
                 <div className="rounded-lg bg-white p-12 text-center shadow-1">
-                  <p className="text-gray-5">Loading products…</p>
+                  <p className="text-gray-5">در حال بارگذاری محصولات…</p>
                 </div>
               )}
 
               {!error && !loading && products.length === 0 && (
                 <div className="rounded-lg bg-white p-12 text-center shadow-1">
-                  <p className="text-lg font-medium text-dark">No products found.</p>
+                  <p className="text-lg font-medium text-dark">محصولی پیدا نشد.</p>
                   <button onClick={clearFilters} className="mt-5 text-blue">
-                    Clear filters
+                    پاک کردن فیلترها
                   </button>
                 </div>
               )}
@@ -286,7 +286,7 @@ export default function ShopWithSidebar() {
                     onClick={() => setPage((current) => Math.max(1, current - 1))}
                     className="rounded-md border border-gray-3 bg-white px-4 py-2 disabled:opacity-40"
                   >
-                    Previous
+                    قبلی
                   </button>
                   <span className="px-3 text-sm text-gray-5">
                     Page {page} of {totalPages}
@@ -296,7 +296,7 @@ export default function ShopWithSidebar() {
                     onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
                     className="rounded-md border border-gray-3 bg-white px-4 py-2 disabled:opacity-40"
                   >
-                    Next
+                    بعدی
                   </button>
                 </div>
               )}

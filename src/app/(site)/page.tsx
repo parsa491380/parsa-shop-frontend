@@ -2,8 +2,8 @@ import Home from "@/components/Home";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Shoes & Clothing Store",
-  description: "Shop shoes and clothing online.",
+  title: "فروشگاه کفش و پوشاک",
+  description: "خرید آنلاین کفش و پوشاک",
   // other metadata
 };
 

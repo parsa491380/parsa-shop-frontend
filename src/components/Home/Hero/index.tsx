@@ -37,7 +37,7 @@ const Hero = () => {
                 <div className="flex h-full min-h-[420px] items-center justify-between gap-8 p-6 sm:p-10 lg:p-12">
                   <div className="max-w-[400px]">
                     <span className="mb-3 block font-medium text-custom-1 text-blue">
-                      Featured product
+                      محصول ویژه
                     </span>
                     <h1 className="font-semibold text-dark text-2xl sm:text-4xl mb-4">
                       {featured.title}
@@ -58,7 +58,7 @@ const Hero = () => {
                         }
                         className="inline-flex font-medium text-white text-custom-sm rounded-md bg-dark py-3 px-9 hover:bg-blue"
                       >
-                        View product
+                        مشاهده محصول
                       </Link>
                     </div>
                   </div>
@@ -80,16 +80,16 @@ const Hero = () => {
                         className="h-full w-full object-contain"
                       />
                     ) : (
-                      <span className="text-gray-4">No image</span>
+                      <span className="text-gray-4">بدون تصویر</span>
                     )}
                   </Link>
                 </div>
               ) : (
                 <div className="flex min-h-[420px] items-center justify-center p-8 text-center">
                   <div>
-                    <h1 className="font-semibold text-dark text-3xl mb-3">Shop shoes & clothing</h1>
+                    <h1 className="font-semibold text-dark text-3xl mb-3">خرید کفش و پوشاک</h1>
                     <p className="text-dark-4">
-                      Your catalogue will appear here when products are published in Oscar.
+                      پس از انتشار محصولات در Oscar، فهرست محصولات اینجا نمایش داده می‌شود.
                     </p>
                   </div>
                 </div>
@@ -110,7 +110,7 @@ const Hero = () => {
                   className="w-full relative rounded-[10px] bg-white p-5 sm:p-7.5 flex items-center justify-between gap-6 min-h-[197px]"
                 >
                   <div className="max-w-[200px]">
-                    <span className="block text-sm text-dark-4 mb-1.5">Featured</span>
+                    <span className="block text-sm text-dark-4 mb-1.5">ویژه</span>
                     <h2 className="font-semibold text-dark text-lg sm:text-xl">{product.title}</h2>
                     <span className="mt-4 inline-flex font-medium text-dark">
                       {product.discountedPrice} {product.currency ?? ""}
@@ -126,14 +126,14 @@ const Hero = () => {
                       className="h-[135px] w-[135px] object-contain"
                     />
                   ) : (
-                    <span className="text-sm text-gray-4">No image</span>
+                    <span className="text-sm text-gray-4">بدون تصویر</span>
                   )}
                 </Link>
               ))}
 
               {secondary.length === 0 && (
                 <div className="rounded-[10px] bg-white p-7.5 text-dark-4 min-h-[197px] flex items-center">
-                  Add more public products in the Oscar dashboard to populate this section.
+                  برای تکمیل این بخش، محصولات بیشتری را در پیشخوان Oscar منتشر کنید.
                 </div>
               )}
             </div>

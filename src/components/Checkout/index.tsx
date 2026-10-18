@@ -193,7 +193,7 @@ export default function Checkout() {
   if (storeLoading || loadingData) {
     return (
       <>
-        <Breadcrumb title="Checkout" pages={["Checkout"]} />
+        <Breadcrumb title="تسویه‌حساب" pages={["تسویه‌حساب"]} />
         <section className="bg-gray-2 py-20">
           <div className="mx-auto max-w-[1170px] px-4 text-center">Loading checkout...</div>
         </section>
@@ -204,7 +204,7 @@ export default function Checkout() {
   if (!user) {
     return (
       <>
-        <Breadcrumb title="Checkout" pages={["Checkout"]} />
+        <Breadcrumb title="تسویه‌حساب" pages={["تسویه‌حساب"]} />
         <section className="bg-gray-2 py-20">
           <div className="mx-auto max-w-[570px] rounded-xl bg-white p-8 text-center shadow-1">
             <h1 className="text-2xl font-semibold text-dark">Sign in to checkout</h1>
@@ -215,7 +215,7 @@ export default function Checkout() {
               href="/signin"
               className="mt-6 inline-flex rounded-md bg-blue px-7 py-3 font-medium text-white hover:bg-blue-dark"
             >
-              Sign in
+              ورود
             </Link>
           </div>
         </section>
@@ -226,7 +226,7 @@ export default function Checkout() {
   if (order) {
     return (
       <>
-        <Breadcrumb title="Order Received" pages={["Checkout", "/", "Complete"]} />
+        <Breadcrumb title="Order Received" pages={["تسویه‌حساب", "/", "Complete"]} />
         <section className="bg-gray-2 py-20">
           <div className="mx-auto max-w-[700px] rounded-xl bg-white p-8 shadow-1">
             <p className="text-sm font-medium text-blue">Order created</p>
@@ -263,7 +263,7 @@ export default function Checkout() {
                 href="/shop-with-sidebar"
                 className="rounded-md border border-gray-3 px-6 py-3 font-medium text-dark hover:bg-gray-1"
               >
-                Continue shopping
+                ادامه خرید
               </Link>
             </div>
           </div>
@@ -274,7 +274,7 @@ export default function Checkout() {
 
   return (
     <>
-      <Breadcrumb title="Checkout" pages={["Checkout"]} />
+      <Breadcrumb title="تسویه‌حساب" pages={["تسویه‌حساب"]} />
 
       <section className="bg-gray-2 py-20">
         <div className="mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0">
@@ -296,13 +296,13 @@ export default function Checkout() {
 
                 <div className="mt-7 grid gap-5 sm:grid-cols-2">
                   <Field
-                    label="First name"
+                    label="نام"
                     value={form.first_name}
                     onChange={(value) => updateField("first_name", value)}
                     required
                   />
                   <Field
-                    label="Last name"
+                    label="نام خانوادگی"
                     value={form.last_name}
                     onChange={(value) => updateField("last_name", value)}
                     required
@@ -311,7 +311,7 @@ export default function Checkout() {
 
                 <div className="mt-5">
                   <Field
-                    label="Address"
+                    label="نشانی"
                     value={form.line1}
                     onChange={(value) => updateField("line1", value)}
                     required
@@ -328,13 +328,13 @@ export default function Checkout() {
 
                 <div className="mt-5 grid gap-5 sm:grid-cols-2">
                   <Field
-                    label="City"
+                    label="شهر"
                     value={form.city}
                     onChange={(value) => updateField("city", value)}
                     required
                   />
                   <Field
-                    label="State / province"
+                    label="استان"
                     value={form.state}
                     onChange={(value) => updateField("state", value)}
                   />
@@ -342,14 +342,14 @@ export default function Checkout() {
 
                 <div className="mt-5 grid gap-5 sm:grid-cols-2">
                   <Field
-                    label="Postcode"
+                    label="کد پستی"
                     value={form.postcode}
                     onChange={(value) => updateField("postcode", value)}
                     required
                   />
 
                   <label className="block">
-                    <span className="mb-2.5 block">Country</span>
+                    <span className="mb-2.5 block">کشور</span>
                     <select
                       required
                       value={form.country}
@@ -388,7 +388,7 @@ export default function Checkout() {
 
                 {addresses.length > 0 && (
                   <div className="mt-6 rounded-lg bg-gray-1 p-4">
-                    <p className="font-medium text-dark">Saved addresses</p>
+                    <p className="font-medium text-dark">نشانی‌های ذخیره‌شده</p>
                     <p className="mt-1 text-sm text-gray-5">
                       Your default address was loaded automatically. You can edit the fields above
                       before placing the order.
@@ -407,7 +407,7 @@ export default function Checkout() {
               </div>
 
               <div className="h-fit rounded-xl bg-white p-5 shadow-1 sm:p-8">
-                <h2 className="text-xl font-semibold text-dark">Your order</h2>
+                <h2 className="text-xl font-semibold text-dark">سفارش شما</h2>
 
                 <div className="mt-5 border-y border-gray-3">
                   {basket?.lines.map((line) => (
@@ -428,15 +428,15 @@ export default function Checkout() {
 
                 <div className="mt-5 space-y-3">
                   <SummaryRow
-                    label="Subtotal"
+                    label="جمع جزء"
                     value={`${subtotal} ${basket?.currency ?? shippingCurrency}`}
                   />
                   <SummaryRow
-                    label="Shipping"
+                    label="ارسال"
                     value={`${shippingPrice} ${shippingCurrency || basket?.currency || ""}`}
                   />
                   <div className="flex justify-between border-t border-gray-3 pt-4 font-semibold text-dark">
-                    <span>Total</span>
+                    <span>مجموع</span>
                     <span>
                       {total} {basket?.currency ?? shippingCurrency}
                     </span>

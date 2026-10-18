@@ -39,7 +39,7 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
                     ? "text-red bg-red-light-6"
                     : orderItem.status === "processing"
                       ? "text-yellow bg-yellow-light-4"
-                      : "Unknown Status"
+                      : "وضعیت نامشخص"
               }`}
             >
               {orderItem.status}
@@ -85,7 +85,7 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
                         ? "text-red bg-red-light-6"
                         : orderItem.status === "processing"
                           ? "text-yellow bg-yellow-light-4"
-                          : "Unknown Status"
+                          : "وضعیت نامشخص"
                   }`}
                 >
                   {orderItem.status}
@@ -101,7 +101,7 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
 
             <div className="">
               <p className="text-custom-sm text-dark">
-                <span className="font-bold pr-2">Total:</span> ${orderItem.total}
+                <span className="font-bold pr-2">مجموع:</span> ${orderItem.total}
               </p>
             </div>
 

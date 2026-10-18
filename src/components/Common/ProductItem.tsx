@@ -73,7 +73,7 @@ export default function ProductItem({ item }: { item: Product }) {
             href={href}
             className="flex min-h-[270px] w-full items-center justify-center text-sm text-gray-4"
           >
-            No image
+            بدون تصویر
           </Link>
         )}
 
@@ -83,7 +83,7 @@ export default function ProductItem({ item }: { item: Product }) {
               dispatch(updateQuickView({ ...item }));
               openModal();
             }}
-            aria-label="Quick view"
+            aria-label="مشاهده سریع"
             className="flex h-9 w-9 items-center justify-center rounded-[5px] bg-white text-dark shadow-1 hover:text-blue"
           >
             <span className="text-sm">↗</span>
@@ -95,7 +95,7 @@ export default function ProductItem({ item }: { item: Product }) {
             disabled={!item.hasVariants && (item.available === false || item.stock === 0 || adding)}
             className="rounded-[5px] bg-blue px-5 py-[7px] text-custom-sm font-medium text-white hover:bg-blue-dark disabled:cursor-not-allowed disabled:bg-gray-4"
           >
-            {adding ? "Adding…" : item.hasVariants ? "Choose options" : "Add to cart"}
+            {adding ? "در حال افزودن…" : item.hasVariants ? "انتخاب گزینه‌ها" : "افزودن به سبد خرید"}
           </button>
 
           <button
@@ -124,7 +124,7 @@ export default function ProductItem({ item }: { item: Product }) {
         <span className="text-custom-sm">
           {typeof item.rating === "number" && item.rating > 0
             ? item.rating.toFixed(1)
-            : "No reviews"}
+            : "بدون دیدگاه"}
           {item.reviewCount ? ` (${item.reviewCount})` : ""}
         </span>
       </div>

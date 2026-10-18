@@ -23,9 +23,9 @@ export default function BestSeller() {
           <div>
             <span className="mb-1.5 flex items-center gap-2.5 font-medium text-dark">
               <Image src="/images/icons/icon-07.svg" alt="icon" width={17} height={17} />
-              Featured
+              ویژه
             </span>
-            <h2 className="font-semibold text-xl text-dark xl:text-heading-5">Best Sellers</h2>
+            <h2 className="font-semibold text-xl text-dark xl:text-heading-5">پرفروش‌ترین‌ها</h2>
           </div>
         </div>
 
@@ -37,7 +37,7 @@ export default function BestSeller() {
           </div>
         ) : (
           <div className="rounded-xl bg-gray-1 p-10 text-center text-gray-5">
-            Add products and prioritize them in Oscar's dashboard to show featured products here.
+            برای نمایش محصولات ویژه، محصولات را در پیشخوان Oscar منتشر و اولویت‌بندی کنید.
           </div>
         )}
 
@@ -46,7 +46,7 @@ export default function BestSeller() {
             href="/shop-without-sidebar"
             className="inline-flex rounded-md border border-gray-3 bg-gray-1 px-12.5 py-3 text-custom-sm font-medium text-dark hover:bg-dark hover:text-white"
           >
-            View All
+            مشاهده همه
           </Link>
         </div>
       </div>

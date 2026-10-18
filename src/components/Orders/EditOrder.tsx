@@ -29,9 +29,9 @@ const EditOrder = ({ order, toggleModal }: any) => {
           required
           onChange={handleChanege}
         >
-          <option value="processing">Processing</option>
+          <option value="processing">در حال پردازش</option>
           <option value="on-hold">On Hold</option>
-          <option value="delivered">Delivered</option>
+          <option value="delivered">تحویل داده شده</option>
           <option value="cancelled">Cancelled</option>
         </select>
 
@@ -39,7 +39,7 @@ const EditOrder = ({ order, toggleModal }: any) => {
           className="mt-5 w-full rounded-[10px] border border-blue-1 bg-blue-1 text-white py-3.5 px-5 text-custom-sm bg-blue"
           onClick={handleSubmit}
         >
-          Save Changes
+          ذخیره تغییرات
         </button>
       </div>
     </div>

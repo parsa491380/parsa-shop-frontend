@@ -98,9 +98,9 @@ export default function MyAccount() {
   if (loading) {
     return (
       <>
-        <Breadcrumb title="My Account" pages={["My Account"]} />
+        <Breadcrumb title="حساب کاربری من" pages={["حساب کاربری من"]} />
         <section className="bg-gray-2 py-20">
-          <div className="mx-auto max-w-[1170px] px-4 text-center">Loading account...</div>
+          <div className="mx-auto max-w-[1170px] px-4 text-center">در حال بارگذاری حساب کاربری…</div>
         </section>
       </>
     );
@@ -109,18 +109,18 @@ export default function MyAccount() {
   if (!user) {
     return (
       <>
-        <Breadcrumb title="My Account" pages={["My Account"]} />
+        <Breadcrumb title="حساب کاربری من" pages={["حساب کاربری من"]} />
         <section className="bg-gray-2 py-20">
           <div className="mx-auto max-w-[570px] rounded-xl bg-white p-8 text-center shadow-1">
-            <h1 className="text-2xl font-semibold text-dark">You are not signed in</h1>
+            <h1 className="text-2xl font-semibold text-dark">وارد حساب کاربری نشده‌اید</h1>
             <p className="mt-3 text-gray-5">
-              Sign in to view orders, saved addresses, and account details.
+              برای مشاهده سفارش‌ها، نشانی‌های ذخیره‌شده و جزئیات حساب وارد شوید.
             </p>
             <Link
               href="/signin"
               className="mt-6 inline-flex rounded-md bg-blue px-7 py-3 font-medium text-white hover:bg-blue-dark"
             >
-              Sign in
+              ورود
             </Link>
           </div>
         </section>
@@ -130,7 +130,7 @@ export default function MyAccount() {
 
   return (
     <>
-      <Breadcrumb title="My Account" pages={["My Account"]} />
+      <Breadcrumb title="حساب کاربری من" pages={["حساب کاربری من"]} />
 
       <section className="bg-gray-2 py-20">
         <div className="mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0">
@@ -145,10 +145,10 @@ export default function MyAccount() {
 
               <nav className="mt-4 flex flex-col gap-2">
                 {[
-                  ["dashboard", "Dashboard"],
-                  ["orders", "Orders"],
-                  ["addresses", "Addresses"],
-                  ["account", "Account details"],
+                  ["dashboard", "پیشخوان"],
+                  ["orders", "سفارش‌ها"],
+                  ["addresses", "نشانی‌ها"],
+                  ["account", "جزئیات حساب"],
                 ].map(([value, label]) => (
                   <button
                     key={value}
@@ -169,7 +169,7 @@ export default function MyAccount() {
                   onClick={handleLogout}
                   className="rounded-md bg-gray-1 px-4 py-3 text-left text-sm font-medium text-dark hover:bg-red hover:text-white"
                 >
-                  Sign out
+                  خروج از حساب
                 </button>
               </nav>
             </aside>
@@ -189,7 +189,7 @@ export default function MyAccount() {
                     href="/shop-with-sidebar"
                     className="mt-7 inline-flex rounded-md bg-blue px-6 py-3 font-medium text-white hover:bg-blue-dark"
                   >
-                    Continue shopping
+                    ادامه خرید
                   </Link>
                 </div>
               )}
@@ -197,7 +197,7 @@ export default function MyAccount() {
               {tab === "orders" && (
                 <div>
                   <div className="border-b border-gray-3 p-7.5">
-                    <h2 className="text-xl font-semibold text-dark">Your orders</h2>
+                    <h2 className="text-xl font-semibold text-dark">سفارش‌های شما</h2>
                   </div>
                   <Orders />
                 </div>
@@ -206,9 +206,9 @@ export default function MyAccount() {
               {tab === "addresses" && (
                 <div className="p-7.5">
                   <div>
-                    <h2 className="text-xl font-semibold text-dark">Saved addresses</h2>
+                    <h2 className="text-xl font-semibold text-dark">نشانی‌های ذخیره‌شده</h2>
                     <p className="mt-1 text-sm text-gray-5">
-                      Addresses are stored in Django/Oscar, not in browser storage.
+                      نشانی‌ها در Django/Oscar ذخیره می‌شوند، نه در مرورگر.
                     </p>
                   </div>
 
@@ -238,18 +238,18 @@ export default function MyAccount() {
                           onClick={() => handleDeleteAddress(address.id)}
                           className="mt-4 text-sm font-medium text-red hover:underline"
                         >
-                          Delete
+                          حذف
                         </button>
                       </div>
                     ))}
                   </div>
 
                   <form onSubmit={handleAddressSubmit} className="mt-8 border-t border-gray-3 pt-7">
-                    <h3 className="text-lg font-medium text-dark">Add an address</h3>
+                    <h3 className="text-lg font-medium text-dark">افزودن نشانی</h3>
 
                     <div className="mt-5 grid gap-5 sm:grid-cols-2">
                       <AccountField
-                        label="First name"
+                        label="نام"
                         value={addressForm.first_name}
                         onChange={(value) =>
                           setAddressForm((current) => ({
@@ -261,7 +261,7 @@ export default function MyAccount() {
                       />
 
                       <AccountField
-                        label="Last name"
+                        label="نام خانوادگی"
                         value={addressForm.last_name}
                         onChange={(value) =>
                           setAddressForm((current) => ({
@@ -275,7 +275,7 @@ export default function MyAccount() {
 
                     <div className="mt-5">
                       <AccountField
-                        label="Address"
+                        label="نشانی"
                         value={addressForm.line1}
                         onChange={(value) =>
                           setAddressForm((current) => ({
@@ -302,7 +302,7 @@ export default function MyAccount() {
 
                     <div className="mt-5 grid gap-5 sm:grid-cols-2">
                       <AccountField
-                        label="City"
+                        label="شهر"
                         value={addressForm.line4}
                         onChange={(value) =>
                           setAddressForm((current) => ({
@@ -314,7 +314,7 @@ export default function MyAccount() {
                       />
 
                       <AccountField
-                        label="State / province"
+                        label="استان"
                         value={addressForm.state}
                         onChange={(value) =>
                           setAddressForm((current) => ({
@@ -327,7 +327,7 @@ export default function MyAccount() {
 
                     <div className="mt-5 grid gap-5 sm:grid-cols-2">
                       <AccountField
-                        label="Postcode"
+                        label="کد پستی"
                         value={addressForm.postcode}
                         onChange={(value) =>
                           setAddressForm((current) => ({
@@ -339,7 +339,7 @@ export default function MyAccount() {
                       />
 
                       <label className="block">
-                        <span className="mb-2.5 block">Country</span>
+                        <span className="mb-2.5 block">کشور</span>
                         <select
                           required
                           value={addressForm.country}
@@ -351,7 +351,7 @@ export default function MyAccount() {
                           }
                           className="w-full rounded-lg border border-gray-3 bg-gray-1 px-5 py-3 outline-none focus:ring-2 focus:ring-blue/20"
                         >
-                          <option value="">Select country</option>
+                          <option value="">انتخاب کشور</option>
                           {countries.map((country) => (
                             <option key={country.code} value={country.code}>
                               {country.name}
@@ -363,7 +363,7 @@ export default function MyAccount() {
 
                     <div className="mt-5">
                       <AccountField
-                        label="Phone"
+                        label="تلفن"
                         value={addressForm.phone_number}
                         onChange={(value) =>
                           setAddressForm((current) => ({
@@ -386,7 +386,7 @@ export default function MyAccount() {
                             }))
                           }
                         />
-                        Default shipping address
+                        نشانی پیش‌فرض ارسال
                       </label>
 
                       <label className="flex items-center gap-2">
@@ -400,7 +400,7 @@ export default function MyAccount() {
                             }))
                           }
                         />
-                        Default billing address
+                        نشانی پیش‌فرض صورتحساب
                       </label>
                     </div>
 
@@ -417,22 +417,22 @@ export default function MyAccount() {
 
               {tab === "account" && (
                 <div className="p-7.5">
-                  <h2 className="text-xl font-semibold text-dark">Account details</h2>
+                  <h2 className="text-xl font-semibold text-dark">جزئیات حساب</h2>
 
                   <div className="mt-5 grid gap-5 sm:grid-cols-2">
                     <div className="rounded-lg bg-gray-1 p-5">
-                      <p className="text-sm text-gray-5">First name</p>
+                      <p className="text-sm text-gray-5">نام</p>
                       <p className="mt-1 font-medium text-dark">{user.first_name || "—"}</p>
                     </div>
 
                     <div className="rounded-lg bg-gray-1 p-5">
-                      <p className="text-sm text-gray-5">Last name</p>
+                      <p className="text-sm text-gray-5">نام خانوادگی</p>
                       <p className="mt-1 font-medium text-dark">{user.last_name || "—"}</p>
                     </div>
                   </div>
 
                   <div className="mt-5 rounded-lg bg-gray-1 p-5">
-                    <p className="text-sm text-gray-5">Email</p>
+                    <p className="text-sm text-gray-5">ایمیل</p>
                     <p className="mt-1 font-medium text-dark">{user.email}</p>
                   </div>
                 </div>

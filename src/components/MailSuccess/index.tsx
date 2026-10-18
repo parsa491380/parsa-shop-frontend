@@ -11,11 +11,11 @@ const MailSuccess = () => {
           <div className="bg-white rounded-xl shadow-1 px-4 py-10 sm:py-15 lg:py-20 xl:py-25">
             <div className="text-center">
               <h2 className="font-bold text-blue text-4xl lg:text-[45px] lg:leading-[57px] mb-5">
-                Successful!
+                با موفقیت انجام شد!
               </h2>
 
               <h3 className="font-medium text-dark text-xl sm:text-2xl mb-3">
-                Your message sent successfully
+                پیام شما با موفقیت ارسال شد
               </h3>
 
               <p className="max-w-[491px] w-full mx-auto mb-7.5">
@@ -40,7 +40,7 @@ const MailSuccess = () => {
                     fill=""
                   />
                 </svg>
-                Back to Home
+                بازگشت به صفحه اصلی
               </Link>
             </div>
           </div>

@@ -47,7 +47,7 @@ export default function SingleListItem({ item }: { item: Product }) {
               className="h-[240px] w-[240px] object-contain transition duration-300 group-hover:scale-105"
             />
           ) : (
-            <span className="text-sm text-gray-4">No image</span>
+            <span className="text-sm text-gray-4">بدون تصویر</span>
           )}
         </Link>
 
@@ -68,7 +68,7 @@ export default function SingleListItem({ item }: { item: Product }) {
             <span className="text-custom-sm">
               {typeof item.rating === "number" && item.rating > 0
                 ? item.rating.toFixed(1)
-                : "No reviews"}
+                : "بدون دیدگاه"}
               {item.reviewCount ? ` (${item.reviewCount})` : ""}
             </span>
           </div>
@@ -93,7 +93,7 @@ export default function SingleListItem({ item }: { item: Product }) {
               href={href}
               className="rounded-md border border-gray-3 px-5 py-2.5 font-medium text-dark hover:bg-gray-1"
             >
-              View product
+              مشاهده محصول
             </Link>
             <button
               type="button"
@@ -103,7 +103,7 @@ export default function SingleListItem({ item }: { item: Product }) {
               }
               className="rounded-md bg-blue px-5 py-2.5 font-medium text-white hover:bg-blue-dark disabled:cursor-not-allowed disabled:bg-gray-4"
             >
-              {adding ? "Adding…" : item.hasVariants ? "Choose options" : "Add to cart"}
+              {adding ? "در حال افزودن…" : item.hasVariants ? "انتخاب گزینه‌ها" : "افزودن به سبد خرید"}
             </button>
           </div>
         </div>

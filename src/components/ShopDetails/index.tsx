@@ -61,15 +61,15 @@ const ShopDetails = () => {
   const tabs = [
     {
       id: "tabOne",
-      title: "Description",
+      title: "توضیحات",
     },
     {
       id: "tabTwo",
-      title: "Additional Information",
+      title: "اطلاعات تکمیلی",
     },
     {
       id: "tabThree",
-      title: "Reviews",
+      title: "دیدگاه‌ها",
     },
   ];
 
@@ -583,7 +583,7 @@ const ShopDetails = () => {
                     <div className="flex flex-wrap items-center gap-4.5">
                       <div className="flex items-center rounded-md border border-gray-3">
                         <button
-                          aria-label="button for remove product"
+                          aria-label="حذف محصول"
                           className="flex items-center justify-center w-12 h-12 ease-out duration-200 hover:text-blue"
                           onClick={() => quantity > 1 && setQuantity(quantity - 1)}
                         >
@@ -608,7 +608,7 @@ const ShopDetails = () => {
 
                         <button
                           onClick={() => setQuantity(quantity + 1)}
-                          aria-label="button for add product"
+                          aria-label="افزودن محصول"
                           className="flex items-center justify-center w-12 h-12 ease-out duration-200 hover:text-blue"
                         >
                           <svg
@@ -1310,7 +1310,7 @@ const ShopDetails = () => {
                         <div className="flex flex-col lg:flex-row gap-5 sm:gap-7.5 mb-5.5">
                           <div>
                             <label htmlFor="name" className="block mb-2.5">
-                              Name
+                              نام
                             </label>
 
                             <input
@@ -1324,7 +1324,7 @@ const ShopDetails = () => {
 
                           <div>
                             <label htmlFor="email" className="block mb-2.5">
-                              Email
+                              ایمیل
                             </label>
 
                             <input

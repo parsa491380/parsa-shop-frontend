@@ -25,7 +25,7 @@ export default function Signin() {
       router.push("/my-account");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unable to sign in.");
+      setError(err instanceof Error ? err.message : "ورود انجام نشد.");
     } finally {
       setSubmitting(false);
     }
@@ -33,22 +33,22 @@ export default function Signin() {
 
   return (
     <>
-      <Breadcrumb title="Sign In" pages={["Sign In"]} />
+      <Breadcrumb title="ورود" pages={["ورود"]} />
 
       <section className="overflow-hidden bg-gray-2 py-20">
         <div className="mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0">
           <div className="mx-auto w-full max-w-[570px] rounded-xl bg-white p-4 shadow-1 sm:p-7.5 xl:p-11">
             <div className="mb-11 text-center">
-              <h2 className="mb-1.5 text-xl font-semibold text-dark sm:text-2xl">
-                Sign In to Your Account
+              <h2 className="font-semibold text-xl sm:text-2xl xl:text-heading-5 text-dark mb-1.5">
+                وارد حساب کاربری خود شوید
               </h2>
-              <p className="text-gray-5">Use your store account email and password.</p>
+              <p className="text-gray-5">با ایمیل و رمز عبور حساب فروشگاه خود وارد شوید.</p>
             </div>
 
             <form onSubmit={handleSubmit}>
               <div className="mb-5">
                 <label htmlFor="email" className="mb-2.5 block">
-                  Email
+                  ایمیل
                 </label>
                 <input
                   required
@@ -57,14 +57,14 @@ export default function Signin() {
                   id="email"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  placeholder="you@example.com"
-                  className="w-full rounded-lg border border-gray-3 bg-gray-1 px-5 py-3 outline-none duration-200 focus:border-transparent focus:ring-2 focus:ring-blue/20"
+                  placeholder="example@gmail.com"
+                  className="rounded-full border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-3 px-5 outline-hidden duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
                 />
               </div>
 
               <div className="mb-5">
                 <label htmlFor="password" className="mb-2.5 block">
-                  Password
+                  رمز عبور
                 </label>
                 <input
                   required
@@ -75,7 +75,7 @@ export default function Signin() {
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   placeholder="Enter your password"
-                  className="w-full rounded-lg border border-gray-3 bg-gray-1 px-5 py-3 outline-none duration-200 focus:border-transparent focus:ring-2 focus:ring-blue/20"
+                  className="rounded-full border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-3 px-5 outline-hidden duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
                 />
               </div>
 
@@ -83,18 +83,28 @@ export default function Signin() {
                 <p className="mb-5 rounded-md bg-red-light-6 px-4 py-3 text-sm text-red">{error}</p>
               )}
 
+              <a
+                className="block text-center text-dark-4 mt-6 ease-out duration-200 hover:text-dark"
+                href="/forgot-password"
+              >
+                رمز عبور را فراموش کرده‌اید?
+              </a>
+
               <button
                 type="submit"
                 disabled={submitting}
-                className="mt-2 flex w-full justify-center rounded-lg bg-dark px-6 py-3 font-medium text-white duration-200 hover:bg-blue disabled:cursor-not-allowed disabled:bg-gray-4"
+                className="w-full flex justify-center font-medium text-white bg-dark py-3 px-6 rounded-full ease-out duration-200 hover:bg-blue mt-7.5 items-center gap-2"
               >
-                {submitting ? "Signing in..." : "Sign in"}
+                {submitting ? "در حال ورود ..." : "ورود"}
               </button>
 
               <p className="mt-6 text-center">
-                Don&apos;t have an account?
-                <Link href="/signup" className="pl-2 text-dark duration-200 hover:text-blue">
-                  Create one
+                حساب کاربری ندارید؟
+                <Link
+                  href="/signup"
+                  className="text-dark ease-out duration-200 hover:text-blue pl-1"
+                >
+                  ایجاد حساب
                 </Link>
               </p>
             </form>

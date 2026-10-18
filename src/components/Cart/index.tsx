@@ -14,30 +14,30 @@ export default function Cart() {
 
   return (
     <>
-      <Breadcrumb title="Cart" pages={["Cart"]} />
+      <Breadcrumb title="سبد خرید" pages={["سبد خرید"]} />
 
       <section className="overflow-hidden py-20 bg-gray-2">
         <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
           {!basket?.lines.length ? (
             <div className="rounded-xl bg-white p-12 text-center shadow-1">
-              <h2 className="text-2xl font-medium text-dark">Your cart is empty</h2>
-              <p className="mt-3 text-gray-5">Add a product to your basket to continue.</p>
+              <h2 className="text-2xl font-medium text-dark">سبد خرید شما خالی است</h2>
+              <p className="mt-3 text-gray-5">برای ادامه، محصولی به سبد خرید اضافه کنید.</p>
               <Link
                 href="/shop-with-sidebar"
                 className="mt-7 inline-flex rounded-md bg-dark px-8 py-3 font-medium text-white hover:bg-blue"
               >
-                Continue shopping
+                ادامه خرید
               </Link>
             </div>
           ) : (
             <>
               <div className="mb-7.5 flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl font-medium text-dark">Your Cart</h2>
-                  {refreshingBasket && <p className="mt-1 text-sm text-gray-5">Updating…</p>}
+                  <h2 className="text-2xl font-medium text-dark">سبد خرید شما</h2>
+                  {refreshingBasket && <p className="mt-1 text-sm text-gray-5">در حال به‌روزرسانی…</p>}
                 </div>
                 <button onClick={emptyBasket} className="text-blue hover:text-blue-dark">
-                  Clear cart
+                  خالی کردن سبد خرید
                 </button>
               </div>
 
@@ -45,10 +45,10 @@ export default function Cart() {
                 <div className="overflow-x-auto">
                   <div className="min-w-[900px]">
                     <div className="grid grid-cols-[3fr_1fr_1.4fr_1.2fr_50px] gap-5 border-b border-gray-3 px-7.5 py-5">
-                      <span className="text-dark">Product</span>
-                      <span className="text-dark">Price</span>
-                      <span className="text-dark">Quantity</span>
-                      <span className="text-dark">Subtotal</span>
+                      <span className="text-dark">محصول</span>
+                      <span className="text-dark">قیمت</span>
+                      <span className="text-dark">تعداد</span>
+                      <span className="text-dark">جمع جزء</span>
                       <span />
                     </div>
 
@@ -71,7 +71,7 @@ export default function Cart() {
                                 className="h-full w-full object-contain"
                               />
                             ) : (
-                              <span className="text-xs text-gray-4">No image</span>
+                              <span className="text-xs text-gray-4">بدون تصویر</span>
                             )}
                           </div>
                           <div className="min-w-0">
@@ -132,7 +132,7 @@ export default function Cart() {
                     <span className="font-medium text-dark">{basket.num_items}</span>
                   </div>
                   <div className="flex items-center justify-between py-5">
-                    <span className="text-lg font-medium text-dark">Total</span>
+                    <span className="text-lg font-medium text-dark">مجموع</span>
                     <span className="text-lg font-semibold text-dark">
                       {basket.total} {currency}
                     </span>
@@ -141,7 +141,7 @@ export default function Cart() {
                     href="/checkout"
                     className="flex w-full justify-center rounded-md bg-blue py-3.5 font-medium text-white hover:bg-blue-dark"
                   >
-                    Continue to checkout
+                    ادامه به تسویه‌حساب
                   </Link>
                 </div>
               </div>

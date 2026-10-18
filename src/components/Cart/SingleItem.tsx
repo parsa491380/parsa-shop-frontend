@@ -54,7 +54,7 @@ const SingleItem = ({ item }) => {
         <div className="w-max flex items-center rounded-md border border-gray-3">
           <button
             onClick={() => handleDecreaseQuantity()}
-            aria-label="button for remove product"
+            aria-label="حذف محصول"
             className="flex items-center justify-center w-11.5 h-11.5 ease-out duration-200 hover:text-blue"
           >
             <svg
@@ -78,7 +78,7 @@ const SingleItem = ({ item }) => {
 
           <button
             onClick={() => handleIncreaseQuantity()}
-            aria-label="button for add product"
+            aria-label="افزودن محصول"
             className="flex items-center justify-center w-11.5 h-11.5 ease-out duration-200 hover:text-blue"
           >
             <svg
@@ -109,7 +109,7 @@ const SingleItem = ({ item }) => {
       <div className="min-w-[50px] flex justify-end">
         <button
           onClick={() => handleRemoveFromCart()}
-          aria-label="button for remove product from cart"
+          aria-label="حذف محصول از سبد خرید"
           className="flex items-center justify-center rounded-lg max-w-[38px] w-full h-9.5 bg-gray-2 border border-gray-3 text-dark ease-out duration-200 hover:bg-red-light-6 hover:border-red-light-4 hover:text-red"
         >
           <svg

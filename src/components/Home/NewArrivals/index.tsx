@@ -22,15 +22,15 @@ export default function NewArrival() {
           <div>
             <span className="mb-1.5 flex items-center gap-2.5 font-medium text-dark">
               <span className="text-blue">✦</span>
-              Latest from the store
+              تازه‌های فروشگاه
             </span>
-            <h2 className="font-semibold text-xl text-dark xl:text-heading-5">New Arrivals</h2>
+            <h2 className="font-semibold text-xl text-dark xl:text-heading-5">تازه‌رسیده‌ها</h2>
           </div>
           <Link
             href="/shop-with-sidebar"
             className="inline-flex rounded-md border border-gray-3 bg-gray-1 px-7 py-2.5 text-custom-sm font-medium text-dark hover:bg-dark hover:text-white"
           >
-            View All
+            مشاهده همه
           </Link>
         </div>
 
@@ -42,7 +42,7 @@ export default function NewArrival() {
           </div>
         ) : (
           <div className="rounded-xl bg-gray-1 p-10 text-center text-gray-5">
-            No products are currently available.
+            در حال حاضر محصولی موجود نیست.
           </div>
         )}
       </div>

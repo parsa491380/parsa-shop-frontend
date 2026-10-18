@@ -477,3 +477,14 @@ AI RULES:
 - keep secrets server-side
 - keep same-origin /api/* architecture
 - explain backend changes simply to the project owner
+
+
+============================================================
+PERSIAN / RTL LOCALIZATION
+============================================================
+
+- The storefront document language is Persian (`lang="fa"`) and direction is RTL (`dir="rtl"`).
+- Shared RTL behavior and Persian-friendly system font fallbacks are defined at the end of `src/app/css/style.css`.
+- Main navigation, product browsing, cart, authentication, account, checkout, common messages, and several legacy template sections have Persian UI labels.
+- The app remains on the existing Next.js App Router structure; no new root layout was introduced.
+- Product titles/descriptions and other catalogue content come from Django/Oscar and should be entered in Persian in the backend when Persian catalogue content is desired.

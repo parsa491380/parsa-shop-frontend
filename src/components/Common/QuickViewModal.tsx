@@ -69,7 +69,7 @@ export default function QuickViewModal() {
       setAdding(true);
       setMessage(null);
       await addToBasket(product.id, quantity);
-      setMessage("Added to cart.");
+      setMessage("محصول به سبد خرید اضافه شد.");
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Unable to add the product to the cart.");
     } finally {
@@ -114,7 +114,7 @@ export default function QuickViewModal() {
                     />
                   </button>
                 ) : (
-                  <span className="text-gray-5">No image</span>
+                  <span className="text-gray-5">بدون تصویر</span>
                 )}
               </div>
 
@@ -143,7 +143,7 @@ export default function QuickViewModal() {
             </div>
 
             <div className="flex flex-col justify-center">
-              <p className="text-sm text-gray-5">Quick view</p>
+              <p className="text-sm text-gray-5">مشاهده سریع</p>
 
               <h2 className="mt-1 text-2xl font-semibold text-dark">{product.title}</h2>
 
@@ -159,11 +159,11 @@ export default function QuickViewModal() {
 
               <div className="mt-5">
                 {product.available === false ? (
-                  <p className="text-red">Currently unavailable.</p>
+                  <p className="text-red">در حال حاضر موجود نیست.</p>
                 ) : product.stock !== null && product.stock !== undefined ? (
                   <p className="text-sm text-gray-5">{product.stock} available</p>
                 ) : (
-                  <p className="text-sm text-gray-5">Availability confirmed by store.</p>
+                  <p className="text-sm text-gray-5">موجودی توسط فروشگاه تأیید شده است.</p>
                 )}
               </div>
 
@@ -173,7 +173,7 @@ export default function QuickViewModal() {
                   onClick={closeModal}
                   className="mt-7 inline-flex w-fit rounded-md bg-blue px-7 py-3 font-medium text-white hover:bg-blue-dark"
                 >
-                  Choose options
+                  انتخاب گزینه‌ها
                 </Link>
               ) : (
                 <div className="mt-7 flex flex-wrap items-center gap-4">
@@ -203,7 +203,7 @@ export default function QuickViewModal() {
                     disabled={!canDirectlyAdd || adding}
                     className="rounded-md bg-blue px-7 py-3 font-medium text-white hover:bg-blue-dark disabled:cursor-not-allowed disabled:bg-gray-4"
                   >
-                    {adding ? "Adding..." : "Add to cart"}
+                    {adding ? "Adding..." : "افزودن به سبد خرید"}
                   </button>
                 </div>
               )}
@@ -220,7 +220,7 @@ export default function QuickViewModal() {
             }}
             className="mt-8 text-sm text-gray-5 hover:text-dark"
           >
-            Close
+            بستن
           </button>
         </div>
       </div>

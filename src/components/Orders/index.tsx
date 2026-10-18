@@ -62,7 +62,7 @@ export default function Orders() {
             <th className="pb-4 pr-5 font-medium">Date</th>
             <th className="pb-4 pr-5 font-medium">Status</th>
             <th className="pb-4 pr-5 font-medium">Items</th>
-            <th className="pb-4 font-medium">Total</th>
+            <th className="pb-4 font-medium">مجموع</th>
           </tr>
         </thead>
 

@@ -34,7 +34,7 @@ export default function CartSidebarModal() {
       <div className="flex items-center justify-end">
         <div className="w-full max-w-[500px] min-h-screen shadow-1 bg-white px-4 sm:px-7.5 lg:px-11 relative modal-content">
           <div className="sticky top-0 z-10 bg-white flex items-center justify-between pb-7 pt-4 sm:pt-7.5 border-b border-gray-3 mb-7.5">
-            <h2 className="font-medium text-dark text-lg sm:text-2xl">Cart</h2>
+            <h2 className="font-medium text-dark text-lg sm:text-2xl">سبد خرید</h2>
             <button
               onClick={closeCartModal}
               aria-label="Close cart"
@@ -64,7 +64,7 @@ export default function CartSidebarModal() {
                             className="h-full w-full object-contain"
                           />
                         ) : (
-                          <span className="text-xs text-gray-4">No image</span>
+                          <span className="text-xs text-gray-4">بدون تصویر</span>
                         )}
                       </div>
                       <div className="min-w-0">
@@ -114,13 +114,13 @@ export default function CartSidebarModal() {
               </div>
             ) : (
               <div className="py-16 text-center">
-                <p className="text-dark">Your cart is empty.</p>
+                <p className="text-dark">سبد خرید شما خالی است.</p>
                 <Link
                   href="/shop-with-sidebar"
                   onClick={closeCartModal}
                   className="mt-5 inline-flex rounded-md bg-blue px-6 py-3 font-medium text-white hover:bg-blue-dark"
                 >
-                  Continue shopping
+                  ادامه خرید
                 </Link>
               </div>
             )}
@@ -128,7 +128,7 @@ export default function CartSidebarModal() {
 
           <div className="border-t border-gray-3 bg-white pt-5 pb-4 sm:pb-7.5 lg:pb-11 fixed bottom-0 mt-auto w-full max-w-[400px]">
             <div className="flex items-center justify-between gap-5 mb-6">
-              <p className="font-medium text-xl text-dark">Subtotal:</p>
+              <p className="font-medium text-xl text-dark">جمع جزء:</p>
               <p className="font-medium text-xl text-dark">
                 {basket?.total ?? "0.00"} {basket?.currency ?? ""}
               </p>
@@ -139,14 +139,14 @@ export default function CartSidebarModal() {
                 href="/cart"
                 onClick={closeCartModal}
               >
-                View Cart
+                مشاهده سبد خرید
               </Link>
               <Link
                 href="/checkout"
                 onClick={closeCartModal}
                 className="w-full flex justify-center font-medium text-white bg-dark py-[13px] px-6 rounded-full ease-out duration-200 hover:bg-opacity-95"
               >
-                Checkout
+                تسویه‌حساب
               </Link>
             </div>
           </div>

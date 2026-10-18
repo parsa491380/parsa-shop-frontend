@@ -24,7 +24,7 @@ const Signup = () => {
     setError(null);
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match.");
+      setError("رمزهای عبور مطابقت ندارند.");
       return;
     }
 
@@ -41,7 +41,7 @@ const Signup = () => {
       router.push("/my-account");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unable to create your account.");
+      setError(err instanceof Error ? err.message : "ایجاد حساب کاربری انجام نشد.");
     } finally {
       setSubmitting(false);
     }
@@ -49,17 +49,17 @@ const Signup = () => {
 
   return (
     <>
-      <Breadcrumb title="Create Account" pages={["Create Account"]} />
+      <Breadcrumb title="ایجاد حساب کاربری" pages={["ایجاد حساب کاربری"]} />
 
       <section className="overflow-hidden bg-gray-2 py-20">
         <div className="mx-auto w-full max-w-[1170px] px-4 sm:px-8 xl:px-0">
           <div className="mx-auto w-full max-w-[570px] rounded-xl bg-white p-4 shadow-1 sm:p-7.5 xl:p-11">
             <div className="mb-11 text-center">
               <h2 className="mb-1.5 text-xl font-semibold text-dark sm:text-2xl">
-                Create an Account
+                ایجاد حساب کاربری
               </h2>
               <p className="text-gray-5">
-                Create your customer account to track orders and checkout faster.
+                برای پیگیری سفارش‌ها و تسریع خرید، حساب کاربری بسازید.
               </p>
             </div>
 
@@ -67,7 +67,7 @@ const Signup = () => {
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="first_name" className="mb-2.5 block">
-                    First name
+                    نام
                   </label>
                   <input
                     required
@@ -80,7 +80,7 @@ const Signup = () => {
 
                 <div>
                   <label htmlFor="last_name" className="mb-2.5 block">
-                    Last name
+                    نام خانوادگی
                   </label>
                   <input
                     required
@@ -94,7 +94,7 @@ const Signup = () => {
 
               <div className="mt-5">
                 <label htmlFor="email" className="mb-2.5 block">
-                  Email address
+                  نشانی ایمیل
                 </label>
                 <input
                   required
@@ -109,7 +109,7 @@ const Signup = () => {
 
               <div className="mt-5">
                 <label htmlFor="password" className="mb-2.5 block">
-                  Password
+                  رمز عبور
                 </label>
                 <input
                   required
@@ -125,7 +125,7 @@ const Signup = () => {
 
               <div className="mt-5">
                 <label htmlFor="confirm_password" className="mb-2.5 block">
-                  Confirm password
+                  تکرار رمز عبور
                 </label>
                 <input
                   required
@@ -152,9 +152,9 @@ const Signup = () => {
               </button>
 
               <p className="mt-6 text-center">
-                Already have an account?
+                قبلاً حساب ساخته‌اید؟
                 <Link href="/signin" className="pl-2 text-dark duration-200 hover:text-blue">
-                  Sign in
+                  ورود
                 </Link>
               </p>
             </form>

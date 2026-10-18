@@ -33,7 +33,7 @@ const PreviewSliderModal = () => {
     >
       <button
         onClick={() => closePreviewModal()}
-        aria-label="button for close modal"
+        aria-label="بستن پنجره"
         className="absolute top-0 right-0 sm:top-6 sm:right-6 flex items-center justify-center w-10 h-10 rounded-full ease-in duration-150 text-white hover:text-meta-5 z-10"
       >
         <svg

@@ -45,11 +45,9 @@ export default function Categories() {
         <div className="mb-10 flex items-center justify-between">
           <div>
             <span className="flex items-center gap-2.5 font-medium text-dark mb-1.5">
-              Categories
+              دسته‌بندی‌ها
             </span>
-            <h2 className="font-semibold text-xl xl:text-heading-5 text-dark">
-              Browse by Category
-            </h2>
+            <h2 className="font-semibold text-xl xl:text-heading-5 text-dark">مرور دسته‌بندی‌ها</h2>
           </div>
 
           <div className="flex items-center gap-3">
@@ -90,7 +88,7 @@ export default function Categories() {
           </Swiper>
         ) : (
           <div className="rounded-xl bg-gray-1 p-8 text-center text-dark-4">
-            Publish categories in the Oscar dashboard to show them here.
+            برای نمایش دسته‌بندی‌ها، آن‌ها را در پیشخوان داشبورد منتشر کنید.
           </div>
         )}
       </div>

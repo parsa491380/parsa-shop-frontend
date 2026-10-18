@@ -32,10 +32,10 @@ const Testimonials = () => {
               <div>
                 <span className="flex items-center gap-2.5 font-medium text-dark mb-1.5">
                   <Image src="/images/icons/icon-08.svg" alt="icon" width={17} height={17} />
-                  Testimonials
+                  دیدگاه مشتریان
                 </span>
                 <h2 className="font-semibold text-xl xl:text-heading-5 text-dark">
-                  User Feedbacks
+                  دیدگاه مشتریان
                 </h2>
               </div>
 

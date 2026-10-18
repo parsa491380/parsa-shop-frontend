@@ -31,7 +31,7 @@ const HeroCarousal = () => {
                 30%
               </span>
               <span className="block text-dark text-sm sm:text-custom-1 sm:leading-[24px]">
-                Sale
+                حراج
                 <br />
                 Off
               </span>
@@ -50,7 +50,7 @@ const HeroCarousal = () => {
               href="#"
               className="inline-flex font-medium text-white text-custom-sm rounded-md bg-dark py-3 px-9 ease-out duration-200 hover:bg-blue mt-10"
             >
-              Shop Now
+              همین حالا خرید کنید
             </a>
           </div>
 
@@ -68,7 +68,7 @@ const HeroCarousal = () => {
                 30%
               </span>
               <span className="block text-dark text-sm sm:text-custom-1 sm:leading-[24px]">
-                Sale
+                حراج
                 <br />
                 Off
               </span>
@@ -78,13 +78,13 @@ const HeroCarousal = () => {
               <a href="#">True Wireless Noise Cancelling Headphone</a>
             </h1>
 
-            <p>Lorem ipsum dolor sit, consectetur elit nunc suscipit non ipsum nec suscipit.</p>
+            <p>محصولات منتخب فروشگاه را بررسی کنید.</p>
 
             <a
               href="#"
               className="inline-flex font-medium text-white text-custom-sm rounded-md bg-dark py-3 px-9 ease-out duration-200 hover:bg-blue mt-10"
             >
-              Shop Now
+              همین حالا خرید کنید
             </a>
           </div>
 

@@ -31,7 +31,7 @@ export default function SingleItem({ item }: { item: Product }) {
 
     try {
       await addToBasket(item.id, 1);
-      setMessage("Added to cart.");
+      setMessage("محصول به سبد خرید اضافه شد.");
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Unable to add to cart.");
     }
@@ -74,7 +74,7 @@ export default function SingleItem({ item }: { item: Product }) {
           </p>
 
           {!canDirectlyAdd && (
-            <p className="mt-1 text-sm text-gray-5">Select options on the product page.</p>
+            <p className="mt-1 text-sm text-gray-5">گزینه‌ها را در صفحه محصول انتخاب کنید.</p>
           )}
 
           {message && <p className="mt-1 text-sm text-blue">{message}</p>}
@@ -87,7 +87,7 @@ export default function SingleItem({ item }: { item: Product }) {
         disabled={!canDirectlyAdd}
         className="rounded-md border border-gray-3 bg-gray-1 px-6 py-2.5 text-sm font-medium text-dark hover:border-blue hover:bg-blue hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
       >
-        Add to Cart
+        افزودن به سبد خرید
       </button>
     </div>
   );
